@@ -12,7 +12,7 @@ module.exports = function (grunt) {
       server: {
         options: {
           port: 2424,
-          base: 'public',
+          base: '',
           livereload: true,
           keepalive: true
         }
@@ -21,7 +21,7 @@ module.exports = function (grunt) {
 
     watch: {
       css: {
-        files: 'public/scss/*.scss',
+        files: 'scss/*.scss',
         tasks: ['compass'],
         options: {
           livereload: true,
@@ -31,7 +31,7 @@ module.exports = function (grunt) {
 
     jshint: {
       files: {
-        src: ['public/js/*.js', 'Gruntfile.js']
+        src: ['js/*.js', 'Gruntfile.js']
       },
       options: {
         curly: true,
@@ -41,6 +41,7 @@ module.exports = function (grunt) {
         globals: {
           jQuery: true
         },
+        ignores: ['js/*.min.js']
       }
     },
 
@@ -50,7 +51,7 @@ module.exports = function (grunt) {
       },
       my_target: {
         files: {
-          'dist/unison.min.js': ['public/js/unison.js']
+          'js/unison.min.js': ['js/unison.js']
         }
       }
     },
@@ -58,11 +59,11 @@ module.exports = function (grunt) {
     compass: {
       dev: {
         options: {
-          sassDir: 'public/scss',
-          cssDir: 'public/css',
+          sassDir: 'scss',
+          cssDir: 'css',
           trace: true,
           force: true,
-          outputStyle: 'expanded'
+          outputStyle: 'compressed'
         }
       }
     },
@@ -73,15 +74,6 @@ module.exports = function (grunt) {
         options: {
           logConcurrentOutput: true
         }
-      }
-    },
-
-    copy: {
-      main: {
-        files: [
-          { src: ['public/scss/unison.scss'], dest: 'dist/unison.scss' },
-          { src: ['public/js/unison.js'], dest: 'dist/unison.js' }
-        ]
       }
     }
 
