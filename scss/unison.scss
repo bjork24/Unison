@@ -1,64 +1,105 @@
-// config
-$debug: true;
+@import "mixins";
+@import "breakpoints";
 
-// declare breakpoints
-$poof-x-small         : 200px;
-$poof-small           : 400px;
-$poof-small-medium    : 600px;
-$poof-medium          : 800px;
-$poof-large-medium    : 1000px;
-$poof-large           : 1200px;
-$poof-x-large         : 1400px;
+html {
+  background-color: $bg-color;
+  font-size: 54%;
+  @media(min-width: $poof-small-medium) { font-size: 56%; }
+  @media(min-width: $poof-medium)       { font-size: 58%; }
+  @media(min-width: $poof-large-medium) { font-size: 60%; }
+  @media(min-width: $poof-large)        { font-size: 62.5%; }
+}
+//
 
-// create sass list to pass media query data
-// if a breakpoint name changes, remember to
-// update it in the list below as well
-$mq-sync:
-  poof-x-small        $poof-x-small,
-  poof-small          $poof-small,
-  poof-small-medium   $poof-small-medium,
-  poof-medium         $poof-medium,
-  poof-large-medium   $poof-large-medium,
-  poof-large          $poof-large,
-  poof-x-large        $poof-x-large
-;
-
-// build each media query for js ingestion
-@each $mq in $mq-sync {
-  @media screen and (min-width: nth($mq, 2)) {
-    head { font-family: "#{nth($mq, 1)} #{nth($mq, 2)}"; }
-    body:after { content: "#{nth($mq, 1)} - min-width: #{nth($mq, 2)}"; }
+body {
+  font-family: $font-body;
+  color: #444;
+  padding-top: 0;
+  width: 80%;
+  margin: 0 auto;
+  @media(min-width: $poof-large) {
+    width: 70%;
   }
-}
-
-// store hash of all breakpoints
-head title { font-family: "#{$mq-sync}"; }
-
-// debug styles to see breakpoint info
-body:after {
-  display: none;
-}
-
-@if $debug == true {
-  body {
+  &:after {
+    display: none;
+  }
+  img {
+    display: block;
+    max-width: 100%;
+    margin: 50px auto;
+  }
+  &.show-debug {
     padding-top: 30px;
     &:after {
+      font-family: $font-body;
+      font-size: 1.4rem;
       display: block;
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      background-color: #000;
-      background-color: rgba(0,0,0,0.8);
-      text-align: center;
-      color: #FFF;
-      padding: 10px;
-      z-index: 1000;
-      font-size: 12px;
-      font-family: sans-serif;
     }
   }
 }
 
-// hide elements for conditional loading
-*[data-poof-if] { display: none; }
+h1, h2, h3 {
+  font: italic 400 2.4rem/1 $font-head;
+  text-transform: lowercase;
+  color: $primary;
+  text-shadow: 2px 2px 0px darken($bg-color, 10%);
+  @include transition(font-size, 250ms, ease);
+}
+
+h1 {
+  font-size: 7rem;
+  @media(min-width: $poof-small)        { font-size: 8rem; }
+  @media(min-width: $poof-small-medium) { font-size: 9rem; }
+  @media(min-width: $poof-medium)       { font-size: 10rem; }
+  @media(min-width: $poof-large-medium) { font-size: 11rem; }
+  @media(min-width: $poof-large)        { font-size: 12rem; }
+}
+
+h2 {
+  font-size: 5rem;
+  @media(min-width: $poof-small)        { font-size: 6rem; }
+  @media(min-width: $poof-small-medium) { font-size: 7rem; }
+  @media(min-width: $poof-medium)       { font-size: 8rem; }
+  @media(min-width: $poof-large-medium) { font-size: 9rem; }
+  @media(min-width: $poof-large)        { font-size: 10rem; }
+}
+
+h3 {
+  font-size: 3rem;
+  @media(min-width: $poof-small)        { font-size: 4rem; }
+  @media(min-width: $poof-small-medium) { font-size: 5rem; }
+  @media(min-width: $poof-medium)       { font-size: 6rem; }
+  @media(min-width: $poof-large-medium) { font-size: 7rem; }
+  @media(min-width: $poof-large)        { font-size: 8rem; }
+}
+
+p {
+  font-size: 2rem;
+  line-height: 1.5;
+}
+
+hr {
+  height: 1px;
+  border: 0;
+  border-bottom: 1px solid darken($bg-color, 10%);
+  width: 50%;
+  margin: 75px auto;
+}
+
+.gist-it-gist {
+  font-size: 1.6rem;
+  .gist-file {
+    border: 2px solid darken($bg-color, 10%) !important;
+    border-width: 0 2px 2px 0 !important;
+    @include transition(all, 250ms, ease);
+    &:hover {
+      border-color: darken($bg-color, 20%) !important;
+    }
+    .gist-data {
+      background-color: #FFF !important;
+      border: 0 !important;
+      padding: 20px;
+      line-height: 1.4;
+    }
+  }
+}

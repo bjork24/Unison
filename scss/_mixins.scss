@@ -1,0 +1,12 @@
+$font-head: 'Josefin Slab', serif;
+$font-body: 'Pontano Sans', sans-serif;
+$bg-color: #FCFCFC;
+$primary: #0BC68F;
+
+@mixin transition($transition-property, $transition-time, $tween) {
+    -webkit-transition: $transition-property $transition-time $tween;
+    -moz-transition: $transition-property $transition-time $tween;
+    -ms-transition: $transition-property $transition-time $tween;
+    -o-transition: $transition-property $transition-time $tween;
+    transition: $transition-property $transition-time $tween;
+}
