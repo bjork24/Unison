@@ -20,13 +20,6 @@ module.exports = function (grunt) {
     },
 
     watch: {
-      scripts: {
-        files: ['public/js/*.js', 'Gruntfile.js'],
-        tasks: ['jshint'],
-        options: {
-          spawn: false,
-        },
-      },
       css: {
         files: 'public/scss/*.scss',
         tasks: ['compass'],
@@ -81,41 +74,10 @@ module.exports = function (grunt) {
           logConcurrentOutput: true
         }
       }
-    },
-
-    shell: {
-      options: {
-        stdout: true
-      },
-      newRepo: {
-        command: [
-          'rm -rf .git',
-          'git init',
-          'git add .',
-          'git commit -m "New Grunt Up Instance"',
-          'git remote add origin <%= grunt.config("repo") %>',
-          'git push -u origin master',
-          'cd ..',
-          'git clone <%= grunt.config("repo") %>'
-        ].join('&&')
-      }
     }
 
   });
 
   grunt.registerTask('server', ['concurrent:target']);
-
-  grunt.registerTask('init', 'Remove git and set up new repo tracking', function(n) {
-    var repo = grunt.option('repo'), directory;
-    if ( repo == null ) {
-      grunt.log.warn('You must specify a repo (e.g. grunt init --repo=git@github.com:bjork24/grunt-up.git)');
-    } else {
-      directory = repo.split('/');
-      directory = directory[directory.length-1].replace('.git','');
-      grunt.config('repo', repo);
-      grunt.config('repoDir', directory);
-      grunt.task.run('shell:newRepo');
-    }
-  });
 
 };
