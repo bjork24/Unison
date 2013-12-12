@@ -1,4 +1,4 @@
 Unison
 ========
 
-Starting point for static dev using Grunt
+Syncing named breakpoints across CSS, JavaScript, and markup; and client-side conditional loading to boot!
