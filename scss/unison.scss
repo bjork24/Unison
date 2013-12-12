@@ -1,24 +1,29 @@
+@import "compass/reset";
 @import "mixins";
 @import "breakpoints";
 
 html {
   background-color: $bg-color;
   font-size: 54%;
-  @media(min-width: $poof-small-medium) { font-size: 56%; }
-  @media(min-width: $poof-medium)       { font-size: 58%; }
-  @media(min-width: $poof-large-medium) { font-size: 60%; }
-  @media(min-width: $poof-large)        { font-size: 62.5%; }
+  @media(min-width: $usn-small-medium) { font-size: 56%; }
+  @media(min-width: $usn-medium)       { font-size: 58%; }
+  @media(min-width: $usn-large-medium) { font-size: 60%; }
+  @media(min-width: $usn-large)        { font-size: 62.5%; }
 }
-//
+
+* {
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
 
 body {
   font-family: $font-body;
   color: #444;
   padding-top: 0;
-  width: 80%;
-  margin: 0 auto;
-  @media(min-width: $poof-large) {
-    width: 70%;
+  // width: 80%;
+  // margin: 0 auto;
+  @media(min-width: $usn-large) {
+    // width: 70%;
   }
   &:after {
     display: none;
@@ -43,34 +48,33 @@ h1, h2, h3 {
   text-transform: lowercase;
   color: $primary;
   text-shadow: 2px 2px 0px darken($bg-color, 10%);
-  @include transition(font-size, 250ms, ease);
 }
 
 h1 {
   font-size: 7rem;
-  @media(min-width: $poof-small)        { font-size: 8rem; }
-  @media(min-width: $poof-small-medium) { font-size: 9rem; }
-  @media(min-width: $poof-medium)       { font-size: 10rem; }
-  @media(min-width: $poof-large-medium) { font-size: 11rem; }
-  @media(min-width: $poof-large)        { font-size: 12rem; }
+  @media(min-width: $usn-small)        { font-size: 8rem; }
+  @media(min-width: $usn-small-medium) { font-size: 9rem; }
+  @media(min-width: $usn-medium)       { font-size: 10rem; }
+  @media(min-width: $usn-large-medium) { font-size: 11rem; }
+  @media(min-width: $usn-large)        { font-size: 12rem; }
 }
 
 h2 {
   font-size: 5rem;
-  @media(min-width: $poof-small)        { font-size: 6rem; }
-  @media(min-width: $poof-small-medium) { font-size: 7rem; }
-  @media(min-width: $poof-medium)       { font-size: 8rem; }
-  @media(min-width: $poof-large-medium) { font-size: 9rem; }
-  @media(min-width: $poof-large)        { font-size: 10rem; }
+  @media(min-width: $usn-small)        { font-size: 6rem; }
+  @media(min-width: $usn-small-medium) { font-size: 7rem; }
+  @media(min-width: $usn-medium)       { font-size: 8rem; }
+  @media(min-width: $usn-large-medium) { font-size: 9rem; }
+  @media(min-width: $usn-large)        { font-size: 10rem; }
 }
 
 h3 {
   font-size: 3rem;
-  @media(min-width: $poof-small)        { font-size: 4rem; }
-  @media(min-width: $poof-small-medium) { font-size: 5rem; }
-  @media(min-width: $poof-medium)       { font-size: 6rem; }
-  @media(min-width: $poof-large-medium) { font-size: 7rem; }
-  @media(min-width: $poof-large)        { font-size: 8rem; }
+  @media(min-width: $usn-small)        { font-size: 4rem; }
+  @media(min-width: $usn-small-medium) { font-size: 5rem; }
+  @media(min-width: $usn-medium)       { font-size: 6rem; }
+  @media(min-width: $usn-large-medium) { font-size: 7rem; }
+  @media(min-width: $usn-large)        { font-size: 8rem; }
 }
 
 p {
@@ -103,3 +107,5 @@ hr {
     }
   }
 }
+
+@import "modules/!manifest";

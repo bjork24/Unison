@@ -2,25 +2,25 @@
 $debug: true;
 
 // declare breakpoints
-$poof-x-small         : 200px;
-$poof-small           : 400px;
-$poof-small-medium    : 600px;
-$poof-medium          : 800px;
-$poof-large-medium    : 1000px;
-$poof-large           : 1200px;
-$poof-x-large         : 1400px;
+$usn-x-small         : 200px;
+$usn-small           : 400px;
+$usn-small-medium    : 600px;
+$usn-medium          : 800px;
+$usn-large-medium    : 1000px;
+$usn-large           : 1200px;
+$usn-x-large         : 1400px;
 
 // create sass list to pass media query data
 // if a breakpoint name changes, remember to
 // update it in the list below as well
 $mq-sync:
-  poof-x-small        $poof-x-small,
-  poof-small          $poof-small,
-  poof-small-medium   $poof-small-medium,
-  poof-medium         $poof-medium,
-  poof-large-medium   $poof-large-medium,
-  poof-large          $poof-large,
-  poof-x-large        $poof-x-large
+  usn-x-small        $usn-x-small,
+  usn-small          $usn-small,
+  usn-small-medium   $usn-small-medium,
+  usn-medium         $usn-medium,
+  usn-large-medium   $usn-large-medium,
+  usn-large          $usn-large,
+  usn-x-large        $usn-x-large
 ;
 
 // build each media query for js ingestion
@@ -61,4 +61,4 @@ body:after {
 }
 
 // hide elements for conditional loading
-*[data-poof-if] { display: none; }
+*[data-usn-if] { display: none; }

@@ -1,0 +1,33 @@
+$m : ".m-hero";
+
+#{$m} {
+  background-color: $primary;
+  padding: 2.5rem 0 0;
+  @media(min-width: $usn-small-medium) {
+    padding-top: 3rem;
+  }
+  h1 {
+    color: #FFF;
+    text-shadow: 2px 2px 0px rgba(0,0,0,0.1);
+    text-align: center;
+    margin: 0;
+    padding: 0;
+    margin-bottom: 2.5rem;
+    @media(min-width: $usn-small-medium) {
+      margin-bottom: 3rem;
+    }
+  }
+  small {
+    display: block;
+    text-align: center;
+    font-family: $font-body;
+    color: #FFF;
+    font-size: 1.2rem;
+    letter-spacing: 0.1em;
+    background-color: darken($primary, 5%);
+    padding: 10px;
+    @media(min-width: $usn-small) {
+      font-size: 1.4rem;
+    }
+  }
+}

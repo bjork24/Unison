@@ -21,7 +21,7 @@ module.exports = function (grunt) {
 
     watch: {
       css: {
-        files: 'scss/*.scss',
+        files: 'scss/**/*.scss',
         tasks: ['compass'],
         options: {
           livereload: true,
@@ -63,7 +63,7 @@ module.exports = function (grunt) {
           cssDir: 'css',
           trace: true,
           force: true,
-          outputStyle: 'compressed'
+          outputStyle: 'expanded'
         }
       }
     },
