@@ -57,7 +57,7 @@ module.exports = function (grunt) {
       },
       my_target: {
         files: {
-          // 'public/js/output.min.js': ['public/js/input.js']
+          'public/js/unison.min.js': ['public/js/unison.js']
         }
       }
     },
