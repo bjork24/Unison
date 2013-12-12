@@ -17,17 +17,17 @@ Unison = (function() {
       return str.replace(/"/g, '').replace(/'/g, '');
     }
     currentMQ = cleanMQstr(document.head).split(' ');
-    allMQ = cleanMQstr(document.querySelector('title')).split(', ');
+    allMQ = cleanMQstr(document.querySelector('title')).split(',');
     poofMQ.currentMQ = {
       name : currentMQ[0],
       width : currentMQ[1]
     };
     poofMQ.allMQ = {};
     for ( ; i < allMQ.length; i++ ) {
-      var mq = allMQ[i].split(' ');
+      var mq = allMQ[i].trim().split(' ');
       poofMQ.allMQ[mq[0]] = mq[1];
     }
-    return (typeof allBreakpoints === 'boolean') ? poofMQ.allMQ : poofMQ ;
+    return ( typeof allBreakpoints === 'boolean' ) ? poofMQ.allMQ : poofMQ ;
   };
 
   // cache responsive comments nodes and breakpoint data
