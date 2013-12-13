@@ -1,3 +1,12 @@
+a {
+  color: $primary;
+  text-decoration: none;
+  border-bottom: 1px dotted darken($bg-color, 10%);
+  &:hover {
+    border-color: $primary;
+  }
+}
+
 p {
   font-size: 16px;
   line-height: 1.5;

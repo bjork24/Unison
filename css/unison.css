@@ -215,19 +215,30 @@ body.show-debug:after {
 }
 
 /* line 1, ../scss/patterns/_p-base.scss */
+a {
+  color: #0bc68f;
+  text-decoration: none;
+  border-bottom: 1px dotted #d4d4d4;
+}
+/* line 5, ../scss/patterns/_p-base.scss */
+a:hover {
+  border-color: #0bc68f;
+}
+
+/* line 10, ../scss/patterns/_p-base.scss */
 p {
   font-size: 16px;
   line-height: 1.5;
   margin: 25px 0;
 }
 @media (min-width: 600px) {
-  /* line 1, ../scss/patterns/_p-base.scss */
+  /* line 10, ../scss/patterns/_p-base.scss */
   p {
     font-size: 18px;
   }
 }
 
-/* line 10, ../scss/patterns/_p-base.scss */
+/* line 19, ../scss/patterns/_p-base.scss */
 hr {
   height: 1px;
   border: 0;
@@ -236,7 +247,7 @@ hr {
   margin: 75px auto;
 }
 
-/* line 18, ../scss/patterns/_p-base.scss */
+/* line 27, ../scss/patterns/_p-base.scss */
 pre {
   font-family: Consolas, "Andale Mono WT", "Andale Mono", "Lucida Console", "Lucida Sans Typewriter", "DejaVu Sans Mono", "Bitstream Vera Sans Mono", "Liberation Mono", "Nimbus Mono L", Monaco, "Courier New", Courier, monospace;
   line-height: 1.4;
