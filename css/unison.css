@@ -205,7 +205,7 @@ body img {
 }
 /* line 26, ../scss/unison.scss */
 body.show-debug {
-  padding-top: 30px;
+  padding-top: 25px;
 }
 /* line 28, ../scss/unison.scss */
 body.show-debug:after {
@@ -216,18 +216,37 @@ body.show-debug:after {
 
 /* line 1, ../scss/patterns/_p-base.scss */
 p {
-  font-size: 18px;
+  font-size: 16px;
   line-height: 1.5;
-  margin: 30px 0;
+  margin: 25px 0;
+}
+@media (min-width: 600px) {
+  /* line 1, ../scss/patterns/_p-base.scss */
+  p {
+    font-size: 18px;
+  }
 }
 
-/* line 7, ../scss/patterns/_p-base.scss */
+/* line 10, ../scss/patterns/_p-base.scss */
 hr {
   height: 1px;
   border: 0;
   border-bottom: 1px solid #d4d4d4;
   width: 50%;
   margin: 75px auto;
+}
+
+/* line 18, ../scss/patterns/_p-base.scss */
+pre {
+  font-family: Consolas, "Andale Mono WT", "Andale Mono", "Lucida Console", "Lucida Sans Typewriter", "DejaVu Sans Mono", "Bitstream Vera Sans Mono", "Liberation Mono", "Nimbus Mono L", Monaco, "Courier New", Courier, monospace;
+  line-height: 1.4;
+  background-color: #FFF;
+  color: #888;
+  overflow-x: auto;
+  padding: 25px;
+  border-style: solid;
+  border-width: 1px 1px 2px;
+  border-color: #e1e1e1 #e1e1e1 #c8c8c8;
 }
 
 /* line 3, ../scss/modules/_m-hero.scss */
@@ -308,66 +327,4 @@ hr {
   .m-container {
     width: 50%;
   }
-}
-
-/* Tomorrow Night Eighties Theme */
-/* Original theme - https://github.com/chriskempson/tomorrow-theme */
-/* http://jmblog.github.com/color-themes-for-google-code-highlightjs */
-/* line 4, ../scss/_code-highlight.scss */
-.tomorrow-comment, pre .comment, pre .title {
-  color: #999999;
-}
-
-/* line 8, ../scss/_code-highlight.scss */
-.tomorrow-red, pre .variable, pre .attribute, pre .tag, pre .regexp, pre .ruby .constant, pre .xml .tag .title, pre .xml .pi, pre .xml .doctype, pre .html .doctype, pre .css .id, pre .css .class, pre .css .pseudo {
-  color: #f2777a;
-}
-
-/* line 12, ../scss/_code-highlight.scss */
-.tomorrow-orange, pre .number, pre .preprocessor, pre .pragma, pre .built_in, pre .literal, pre .params, pre .constant {
-  color: #f99157;
-}
-
-/* line 16, ../scss/_code-highlight.scss */
-.tomorrow-yellow, pre .ruby .class .title, pre .css .rules .attribute {
-  color: #ffcc66;
-}
-
-/* line 20, ../scss/_code-highlight.scss */
-.tomorrow-green, pre .string, pre .value, pre .inheritance, pre .header, pre .ruby .symbol, pre .xml .cdata {
-  color: #99cc99;
-}
-
-/* line 24, ../scss/_code-highlight.scss */
-.tomorrow-aqua, pre .css .hexcolor {
-  color: #66cccc;
-}
-
-/* line 28, ../scss/_code-highlight.scss */
-.tomorrow-blue, pre .function, pre .python .decorator, pre .python .title, pre .ruby .function .title, pre .ruby .title .keyword, pre .perl .sub, pre .javascript .title, pre .coffeescript .title {
-  color: #6699cc;
-}
-
-/* line 32, ../scss/_code-highlight.scss */
-.tomorrow-purple, pre .keyword, pre .javascript .function {
-  color: #cc99cc;
-}
-
-/* line 36, ../scss/_code-highlight.scss */
-pre code {
-  display: block;
-  background: #2d2d2d;
-  color: #cccccc;
-  padding: 0.5em;
-}
-
-/* line 49, ../scss/_code-highlight.scss */
-pre .coffeescript .javascript,
-pre .javascript .xml,
-pre .tex .formula,
-pre .xml .javascript,
-pre .xml .vbscript,
-pre .xml .css,
-pre .xml .cdata {
-  opacity: 0.5;
 }

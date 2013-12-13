@@ -21,10 +21,10 @@ body {
   img {
     display: block;
     max-width: 100%;
-    margin: 50px auto;
+    margin: ($gutter * 2) auto;
   }
   &.show-debug {
-    padding-top: 30px;
+    padding-top: $gutter;
     &:after {
       font-family: $font-body;
       font-size: 14px;
@@ -35,4 +35,3 @@ body {
 
 @import "patterns/p-base";
 @import "modules/!manifest";
-@import "code-highlight";

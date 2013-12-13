@@ -1,7 +1,10 @@
 p {
-  font-size: 18px;
+  font-size: 16px;
   line-height: 1.5;
-  margin: 30px 0;
+  margin: $gutter 0;
+  @media(min-width: $usn-small-medium) {
+    font-size: 18px;
+  }
 }
 
 hr {
@@ -9,5 +12,17 @@ hr {
   border: 0;
   border-bottom: 1px solid darken($bg-color, 10%);
   width: 50%;
-  margin: 75px auto;
+  margin: ($gutter * 3) auto;
+}
+
+pre {
+  font-family: $font-pre;
+  line-height: 1.4;
+  background-color: #FFF;
+  color: #888;
+  overflow-x: auto;
+  padding: $gutter;
+  border-style: solid;
+  border-width: 1px 1px 2px;
+  border-color: darken($bg-color, 5%) darken($bg-color, 5%) darken($bg-color, 15%)
 }

@@ -4,7 +4,7 @@ Unison = (function() {
 
   // attributes
   var usn = {
-    trigger : 'data-poof-if',
+    trigger : 'data-usn-load-if',
     mqs : {},
     noMatchMediaSize : '800px'
   };

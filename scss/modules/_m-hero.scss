@@ -2,7 +2,7 @@ $m : ".m-hero";
 
 #{$m} {
   background-color: $primary;
-  padding: 25px 0 0;
+  padding: $gutter 0 0;
   h1 {
     font-family: $font-head;
     font-style: italic;
@@ -12,7 +12,7 @@ $m : ".m-hero";
     text-align: center;
     margin: 0;
     padding: 0;
-    margin-bottom: 25px;
+    margin-bottom: $gutter;
     font-size: 75px;
     @media(min-width: $usn-small) {
       font-size: 100px;
@@ -30,10 +30,10 @@ $m : ".m-hero";
     letter-spacing: 0.1em;
     line-height: 1.5;
     background-color: darken($primary, 5%);
-    padding: 10px 40px;
+    padding: ($gutter * .4) ($gutter * 1.6);
     @media(min-width: $usn-small) {
       font-size: 13px;
-      padding: 10px 0;
+      padding: ($gutter * .4) 0;
     }
     @media(min-width: $usn-small-medium) {
       font-size: 14px;
