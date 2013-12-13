@@ -258,6 +258,19 @@ pre {
   border-style: solid;
   border-width: 1px 1px 2px;
   border-color: #e1e1e1 #e1e1e1 #c8c8c8;
+  font-size: 12px;
+}
+@media (min-width: 400px) {
+  /* line 27, ../scss/patterns/_p-base.scss */
+  pre {
+    font-size: 14px;
+  }
+}
+@media (min-width: 600px) {
+  /* line 27, ../scss/patterns/_p-base.scss */
+  pre {
+    font-size: 16px;
+  }
 }
 
 /* line 3, ../scss/modules/_m-hero.scss */

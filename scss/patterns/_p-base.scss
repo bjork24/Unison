@@ -33,7 +33,14 @@ pre {
   padding: $gutter;
   border-style: solid;
   border-width: 1px 1px 2px;
-  border-color: darken($bg-color, 5%) darken($bg-color, 5%) darken($bg-color, 15%)
+  border-color: darken($bg-color, 5%) darken($bg-color, 5%) darken($bg-color, 15%);
+  font-size: 12px;
+  @media(min-width: $usn-small) {
+    font-size: 14px;
+  }
+  @media(min-width: $usn-small-medium) {
+    font-size: 16px;
+  }
 }
 
 // only apply these to headings within the main content
