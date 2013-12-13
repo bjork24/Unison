@@ -4,11 +4,6 @@
 
 html {
   background-color: $bg-color;
-  font-size: 54%;
-  @media(min-width: $usn-small-medium) { font-size: 56%; }
-  @media(min-width: $usn-medium)       { font-size: 58%; }
-  @media(min-width: $usn-large-medium) { font-size: 60%; }
-  @media(min-width: $usn-large)        { font-size: 62.5%; }
 }
 
 * {
@@ -20,11 +15,6 @@ body {
   font-family: $font-body;
   color: #444;
   padding-top: 0;
-  // width: 80%;
-  // margin: 0 auto;
-  @media(min-width: $usn-large) {
-    // width: 70%;
-  }
   &:after {
     display: none;
   }
@@ -37,75 +27,12 @@ body {
     padding-top: 30px;
     &:after {
       font-family: $font-body;
-      font-size: 1.4rem;
+      font-size: 14px;
       display: block;
     }
   }
 }
 
-h1, h2, h3 {
-  font: italic 400 2.4rem/1 $font-head;
-  text-transform: lowercase;
-  color: $primary;
-  text-shadow: 2px 2px 0px darken($bg-color, 10%);
-}
-
-h1 {
-  font-size: 7rem;
-  @media(min-width: $usn-small)        { font-size: 8rem; }
-  @media(min-width: $usn-small-medium) { font-size: 9rem; }
-  @media(min-width: $usn-medium)       { font-size: 10rem; }
-  @media(min-width: $usn-large-medium) { font-size: 11rem; }
-  @media(min-width: $usn-large)        { font-size: 12rem; }
-}
-
-h2 {
-  font-size: 5rem;
-  @media(min-width: $usn-small)        { font-size: 6rem; }
-  @media(min-width: $usn-small-medium) { font-size: 7rem; }
-  @media(min-width: $usn-medium)       { font-size: 8rem; }
-  @media(min-width: $usn-large-medium) { font-size: 9rem; }
-  @media(min-width: $usn-large)        { font-size: 10rem; }
-}
-
-h3 {
-  font-size: 3rem;
-  @media(min-width: $usn-small)        { font-size: 4rem; }
-  @media(min-width: $usn-small-medium) { font-size: 5rem; }
-  @media(min-width: $usn-medium)       { font-size: 6rem; }
-  @media(min-width: $usn-large-medium) { font-size: 7rem; }
-  @media(min-width: $usn-large)        { font-size: 8rem; }
-}
-
-p {
-  font-size: 2rem;
-  line-height: 1.5;
-}
-
-hr {
-  height: 1px;
-  border: 0;
-  border-bottom: 1px solid darken($bg-color, 10%);
-  width: 50%;
-  margin: 75px auto;
-}
-
-.gist-it-gist {
-  font-size: 1.6rem;
-  .gist-file {
-    border: 2px solid darken($bg-color, 10%) !important;
-    border-width: 0 2px 2px 0 !important;
-    @include transition(all, 250ms, ease);
-    &:hover {
-      border-color: darken($bg-color, 20%) !important;
-    }
-    .gist-data {
-      background-color: #FFF !important;
-      border: 0 !important;
-      padding: 20px;
-      line-height: 1.4;
-    }
-  }
-}
-
+@import "patterns/p-base";
 @import "modules/!manifest";
+@import "code-highlight";

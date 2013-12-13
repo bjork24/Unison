@@ -6,9 +6,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Unison.js</title>
   <link rel="stylesheet" href="css/unison.css" />
-  <link href='http://fonts.googleapis.com/css?family=Josefin+Slab:400italic|Pontano+Sans' rel='stylesheet' type='text/css'>
+  <link href="http://fonts.googleapis.com/css?family=Josefin+Slab:400italic|Pontano+Sans" rel="stylesheet" type="text/css" />
+  <script src="https://google-code-prettify.googlecode.com/svn/loader/run_prettify.js?skin=desert"></script>
 </head>
-<body>
+<body class="show-debug">
 
   <div class="m-hero">
     <h1>Unison.js</h1>
@@ -23,7 +24,29 @@
 
     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus, porro, quasi esse quo dolorem saepe maiores voluptatem et sint beatae dolore mollitia eveniet debitis eos dolores laboriosam odit. Suscipit, praesentium. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus, porro, quasi esse quo dolorem saepe maiores voluptatem et sint beatae dolore mollitia eveniet debitis eos dolores laboriosam odit. Suscipit, praesentium.</p>
 
-    <script src="http://gist-it.appspot.com/github/bjork24/presto/blob/master/Gruntfile.js?slice=3:10&footer=0"></script>
+    <pre class="prettyprint lang-css linenums">
+    // declare breakpoints
+    $poof-x-small         : 200px;
+    $poof-small           : 400px;
+    $poof-small-medium    : 600px;
+    $poof-medium          : 800px;
+    $poof-large-medium    : 1000px;
+    $poof-large           : 1200px;
+    $poof-x-large         : 1400px;
+
+    // create sass list to pass media query data
+    // if a breakpoint name changes, remember to
+    // update it in the list below as well
+    $mq-sync:
+      poof-x-small        $poof-x-small,
+      poof-small          $poof-small,
+      poof-small-medium   $poof-small-medium,
+      poof-medium         $poof-medium,
+      poof-large-medium   $poof-large-medium,
+      poof-large          $poof-large,
+      poof-x-large        $poof-x-large
+    ;
+    </pre>
 
     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus, porro, quasi esse quo dolorem saepe maiores voluptatem et sint beatae dolore mollitia eveniet debitis eos dolores laboriosam odit. Suscipit, praesentium.</p>
 
