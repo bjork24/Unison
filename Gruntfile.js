@@ -54,7 +54,7 @@ module.exports = function (grunt) {
       },
       my_target: {
         files: {
-          'js/unison.min.js': ['js/unison.js']
+          'js/unison.min.js': ['js/unison.js','js/demo.js']
         }
       }
     },
@@ -66,7 +66,7 @@ module.exports = function (grunt) {
           cssDir: 'css',
           trace: true,
           force: true,
-          outputStyle: 'expanded'
+          outputStyle: 'compressed'
         }
       }
     },
