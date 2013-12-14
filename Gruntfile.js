@@ -95,10 +95,11 @@ module.exports = function (grunt) {
           'mv scss/ css/',
           'rm -rf css/modules/ css/patterns/ css/_mixins.scss css/unison.scss',
           'git status',
-          'git add .',
+          'git add -all',
           'git status',
           'git commit -m "Pull new dist from gh-pages"',
-          'git push'
+          'git push',
+          'git co gh-pages'
         ].join('&&')
       }
     }
@@ -106,5 +107,6 @@ module.exports = function (grunt) {
   });
 
   grunt.registerTask('server', ['concurrent:target']);
+  grunt.registerTask('dist', ['shell:pushToMaster']);
 
 };
