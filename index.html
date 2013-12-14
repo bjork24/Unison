@@ -165,6 +165,10 @@ document.getElementById('small-bjork').addEventListener('unisonResponse', functi
 });
 </pre>
 
+  <h2>Disclaimer</h2>
+
+  <p>This plugin should be considered beta. We haven't had a chance to test it fully across older browsers, but it should perform fine on modern browsers. Also, since the <em>unison-responsive-comments.js</em> plugin relies on <em>matchMedia</em>, you will need to use a polyfill for IE9 and below compatability, or set the <em>noMatchMediaSize</em> variable to the size of screen you'd like the script to default to for non-compliant browsers.</p>
+
   </div>
 
   <script>
@@ -175,7 +179,6 @@ document.getElementById('small-bjork').addEventListener('unisonResponse', functi
       console.log('The small photo of Björk loaded successfully!');
     });
   </script>
-
   <script src="js/page.min.js"></script>
 </body>
 </html>
