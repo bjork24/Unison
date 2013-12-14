@@ -28,7 +28,7 @@
 
     <h2>How does it work</h2>
 
-    <p>To take full advantage of Unison.js, you'll need to be using a css pre-processor such as <a href="http://sass-lang.com/" target="_blank">SASS</a>, <a href="http://lesscss.org/" target="_blank">LESS</a>, <a href="http://learnboost.github.io/stylus/" target="_blank">Stylus</a>. Currently, Unison is only set up to use SASS, but LESS and Stylus implimentations are on the way. To begin, declare your breakpoints in your <a href="https://github.com/bjork24/Unison/blob/master/css/_breakpoints.scss#L4-L11" target="_blank"><em>_breakpoints.scss</em></a> partial as you normally would:</p>
+    <p>To take full advantage of <strong>Unison.js</strong>, you'll need to be using a css pre-processor such as <a href="http://sass-lang.com/" target="_blank">SASS</a>, <a href="http://lesscss.org/" target="_blank">LESS</a>, <a href="http://learnboost.github.io/stylus/" target="_blank">Stylus</a>. Currently, Unison is only set up to use SASS, but LESS and Stylus implimentations are on the way. To begin, declare your breakpoints in your <a href="https://github.com/bjork24/Unison/blob/master/css/_breakpoints.scss#L4-L11" target="_blank"><em>_breakpoints.scss</em></a> partial as you normally would:</p>
 
 <pre>
 $usn-x-small         : 200px;
@@ -103,6 +103,10 @@ var currentBPval = Unison.getBreakpoints().currentBP.width;
 
 // currentBPval = "1200px"
 </pre>
+
+    <h2>Conditional loading with Responsive Comments</h2>
+
+    <p>To showcase the utility of <strong>Unison.js</strong>, we decided to refactor one our favorite responsive design tools, <a href="https://twitter.com/chambaz" target="_blank">Adam Chambers'</a> <a href="http://responsivecomments.com/" target="_blank">Responsive Comments</a>, so it could take advantage of synced breakpoints. If you're not familiar with it already, Responsive Comments is an ingenius javascript plugin that allows client-side conditional loading, rather than relying on media queries along or server-side detection (e.g. <a href="http://bradfrost.github.io/this-is-responsive/resources.html#development" target="_blank">RESS</a>). By hiding bandwidth-heavy widgets in simple HTML comments, and only loading them once the screen has hit a certain breakpoint, you can increase the performance of your mobile experience significantly. To that end, we created our first <strong>Unison.js</strong> plugin: <em>unison-responsive-comments.js</em>.</p>
 
     <div data-usn-load-if="usn-large" id="large-bjork">
       <!--

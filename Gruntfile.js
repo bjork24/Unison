@@ -55,8 +55,8 @@ module.exports = function (grunt) {
       my_target: {
         files: {
           'js/unison.min.js': ['js/unison.js'],
-          'js/unison-conditional-load.min.js': ['js/unison-conditional-load.js'],
-          'js/page.min.js': ['js/unison.js','js/unison-conditional-load.js','js/demo.js']
+          'js/unison-responsive-comments.min.js': ['js/unison-responsive-comments.js'],
+          'js/page.min.js': ['js/unison.js','js/unison-responsive-comments.js','js/demo.js']
         }
       }
     },
