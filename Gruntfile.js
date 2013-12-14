@@ -80,6 +80,27 @@ module.exports = function (grunt) {
           logConcurrentOutput: true
         }
       }
+    },
+
+    shell: {
+      options: {
+        stdout: true
+      },
+      pushToMaster: {
+        command: [
+          'git checkout master',
+          'git checkout gh-pages -- js',
+          'rm -rf js/demo.js js/page.min.js',
+          'git checkout gh-pages -- scss',
+          'mv scss/ css/',
+          'rm -rf css/modules/ css/patterns/ css/_mixins.scss css/unison.scss',
+          'git status',
+          'git add .',
+          'git status',
+          'git commit -m "Pull new dist from gh-pages"',
+          'git push'
+        ].join('&&')
+      }
     }
 
   });
