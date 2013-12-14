@@ -106,7 +106,22 @@ var currentBPval = Unison.getBreakpoints().currentBP.width;
 
     <h2>Conditional loading with Responsive Comments</h2>
 
-    <p>To showcase the utility of <strong>Unison.js</strong>, we decided to refactor one our favorite responsive design tools, <a href="https://twitter.com/chambaz" target="_blank">Adam Chambers'</a> <a href="http://responsivecomments.com/" target="_blank">Responsive Comments</a>, so it could take advantage of synced breakpoints. If you're not familiar with it already, Responsive Comments is an ingenius javascript plugin that allows client-side conditional loading, rather than relying on media queries along or server-side detection (e.g. <a href="http://bradfrost.github.io/this-is-responsive/resources.html#development" target="_blank">RESS</a>). By hiding bandwidth-heavy widgets in simple HTML comments, and only loading them once the screen has hit a certain breakpoint, you can increase the performance of your mobile experience significantly. To that end, we created our first <strong>Unison.js</strong> plugin: <em>unison-responsive-comments.js</em>.</p>
+    <p>To showcase the utility of <strong>Unison.js</strong>, we decided to refactor one our favorite responsive design tools, <a href="https://twitter.com/chambaz" target="_blank">Adam Chambers'</a> <a href="http://responsivecomments.com/" target="_blank">Responsive Comments</a>, so it could take advantage of synced breakpoints. If you're not familiar with it already, Responsive Comments is an ingenius javascript plugin that allows client-side conditional loading, instead of relying on media queries alone or server-side detection (e.g. <a href="http://bradfrost.github.io/this-is-responsive/resources.html#development" target="_blank">RESS</a>). By hiding bandwidth-heavy modules in simple HTML comments, and only loading them once the screen has hit a certain breakpoint, you can increase the performance of your mobile experience significantly. To that end, we created our first <strong>Unison.js</strong> plugin: <a href="https://github.com/bjork24/Unison/blob/master/js/unison-responsive-comments.js"><em>unison-responsive-comments.js</em></a>.</p>
+
+    <p>Using the same named breakpoints that we declared in our original <em>_breakpoints.scss</em> file, we can now specify which modules we want to load conditionally based on the our current breakpoint right in the markup. We've included three pictures of Björk below this paragraph that are conditionally loaded only when a certain named breakpoint is fired. All you have to do is specify the breakpoint in your markup in a <em>data-usn-load-if</em> attribute.</p>
+
+<pre>
+&lt;div data-usn-load-if="usn-medium">
+  &lt;!--
+  &lt;hr/>
+  &lt;div class="m-bjork medium">
+    &lt;img src="img/medium.jpg" />
+  &lt;/div>
+  -->
+&lt;/div>
+</pre>
+
+    <p><strong>NOTE:</strong> If you resize your browser back and forth, you will notice that the larger photos load in once you pass a breakpoint, but don't disappear when you resize to a smaller width. That's intended behavior. Conditional loading is not a replacement for media queries; it's sole responsibility is loading in content when a breakpoint is met, not hiding it at smaller sizes.</p>
 
     <div data-usn-load-if="usn-large" id="large-bjork">
       <!--
@@ -135,10 +150,31 @@ var currentBPval = Unison.getBreakpoints().currentBP.width;
         <img src="img/small.jpg" />
         <cite>This is a <strong>small</strong> picture of Björk that only loads if the screen is larger than the <strong>usn-small</strong> breakpoint.</cite>
       </div>
+      <hr/>
       -->
     </div>
 
+    <p>Another powerful feature of Responsive Comments is the ability to tie custom events to conditionally-loaded content. We've added IDs to the largest and smallest Björk pictures, and fire a message to the console whenever they're successfully loaded into the DOM.</p>
+
+<pre>
+document.getElementById('large-bjork').addEventListener('unisonResponse', function(e) {
+  console.log('The large photo of Björk loaded successfully!');
+});
+document.getElementById('small-bjork').addEventListener('unisonResponse', function(e) {
+  console.log('The small photo of Björk loaded successfully!');
+});
+</pre>
+
   </div>
+
+  <script>
+    document.getElementById('large-bjork').addEventListener('unisonResponse', function(e) {
+      console.log('The large photo of Björk loaded successfully!');
+    });
+    document.getElementById('small-bjork').addEventListener('unisonResponse', function(e) {
+      console.log('The small photo of Björk loaded successfully!');
+    });
+  </script>
 
   <script src="js/page.min.js"></script>
 </body>

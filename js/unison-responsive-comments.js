@@ -55,10 +55,10 @@ Unison.ConditionalLoad = (function() {
   var dispatchEvent = function() {
     var ev;
     if ( typeof CustomEvent === 'function' ) {
-      ev = new CustomEvent('poofResponse', { detail : {} });
+      ev = new CustomEvent('unisonResponse', { detail : {} });
     } else if( document.createEvent ) {
       ev = document.createEvent('Event');
-      ev.initEvent('poofResponse', true, true);
+      ev.initEvent('unisonResponse', true, true);
     } else {
       return false;
     }
