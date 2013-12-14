@@ -89,6 +89,7 @@ module.exports = function (grunt) {
       pushToMaster: {
         command: [
           'git checkout master',
+          'rm -rf css/ js/',
           'git checkout gh-pages -- js',
           'rm -rf js/demo.js js/page.min.js',
           'git checkout gh-pages -- scss',
