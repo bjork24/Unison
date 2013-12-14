@@ -151,10 +151,6 @@ body:after {
 }
 
 /* line 43, ../scss/_breakpoints.scss */
-body {
-  padding-top: 30px;
-}
-/* line 45, ../scss/_breakpoints.scss */
 body:after {
   display: block;
   position: fixed;
@@ -171,7 +167,7 @@ body:after {
   font-family: sans-serif;
 }
 
-/* line 64, ../scss/_breakpoints.scss */
+/* line 61, ../scss/_breakpoints.scss */
 *[data-usn-if] {
   display: none;
 }

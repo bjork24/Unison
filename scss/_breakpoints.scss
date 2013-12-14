@@ -40,23 +40,20 @@ body:after {
 }
 
 @if $debug == true {
-  body {
-    padding-top: 30px;
-    &:after {
-      display: block;
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      background-color: #000;
-      background-color: rgba(0,0,0,0.8);
-      text-align: center;
-      color: #FFF;
-      padding: 10px;
-      z-index: 1000;
-      font-size: 12px;
-      font-family: sans-serif;
-    }
+  body:after {
+    display: block;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: #000;
+    background-color: rgba(0,0,0,0.8);
+    text-align: center;
+    color: #FFF;
+    padding: 10px;
+    z-index: 1000;
+    font-size: 12px;
+    font-family: sans-serif;
   }
 }
 
