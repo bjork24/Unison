@@ -12,7 +12,7 @@ Unison.Demo = (function() {
       body.removeAttribute('class');
     }
     e.preventDefault();
-  }
+  };
 
   document.addEventListener('DOMContentLoaded', function(event) {
     document.getElementById('js-toggle-info').addEventListener('click', toggleInfo.bind());
