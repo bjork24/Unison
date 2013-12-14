@@ -1,0 +1,73 @@
+a {
+  color: darken($primary, 10%);
+  text-decoration: none;
+  border-bottom: 1px dotted darken($bg-color, 10%);
+  &:hover {
+    border-color: $primary;
+  }
+}
+
+p {
+  font-size: 16px;
+  line-height: 1.5;
+  margin: $gutter 0;
+  @media(min-width: $usn-small-medium) {
+    font-size: 18px;
+  }
+  em {
+    font-family: $font-pre;
+    font-size: 14px;
+    display: inline-block;
+    background-color: #FFF;
+    padding: 0 5px;
+    @media(min-width: $usn-small-medium) {
+      font-size: 16px;
+    }
+  }
+}
+
+b, strong {
+  font-weight: 600;
+}
+
+hr {
+  height: 1px;
+  border: 0;
+  border-bottom: 1px solid darken($bg-color, 10%);
+  width: 50%;
+  margin: ($gutter * 3) auto;
+}
+
+pre {
+  font-family: $font-pre;
+  line-height: 1.4;
+  background-color: #FFF;
+  color: #888;
+  overflow-x: auto;
+  padding: $gutter;
+  border-style: solid;
+  border-width: 1px 1px 2px;
+  border-color: darken($bg-color, 5%) darken($bg-color, 5%) darken($bg-color, 15%);
+  font-size: 12px;
+  margin: $gutter 0;
+  @media(min-width: $usn-small) {
+    font-size: 14px;
+  }
+  @media(min-width: $usn-small-medium) {
+    font-size: 16px;
+  }
+}
+
+// only apply these to headings within the main content
+.m-container h2 {
+  font-family: $font-head;
+  font-style: italic;
+  text-shadow: 1px 1px 0px darken($bg-color, 10%);
+  color: $primary;
+  font-size: 30px;
+  line-height: 1.1;
+  margin: $gutter 0;
+  @media(min-width: $usn-large-medium) {
+    font-size: 40px;
+  }
+}

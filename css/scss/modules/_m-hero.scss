@@ -1,0 +1,47 @@
+$m : ".m-hero";
+
+#{$m} {
+  background-color: $primary;
+  padding: $gutter 0 0;
+  h1 {
+    font-family: $font-head;
+    font-style: italic;
+    text-transform: lowercase;
+    color: #FFF;
+    text-shadow: 2px 2px 0px rgba(0,0,0,0.1);
+    text-align: center;
+    margin: 0;
+    padding: 0;
+    margin-bottom: $gutter;
+    font-size: 75px;
+    @media(min-width: $usn-small) {
+      font-size: 100px;
+    }
+    @media(min-width: $usn-small-medium) {
+      font-size: 120px;
+    }
+  }
+  small {
+    display: block;
+    text-align: center;
+    font-family: $font-body;
+    color: #FFF;
+    font-size: 12px;
+    font-weight: 300;
+    letter-spacing: 0.1em;
+    line-height: 1.5;
+    background-color: darken($primary, 5%);
+    padding: ($gutter * .4) ($gutter * 1.6);
+    @media(min-width: $usn-small) {
+      font-size: 13px;
+      padding: ($gutter * .4) 0;
+    }
+    @media(min-width: $usn-small-medium) {
+      font-size: 14px;
+    }
+  }
+}
+
+.show-debug #{$m} {
+  padding-top: $gutter * 2;
+}
