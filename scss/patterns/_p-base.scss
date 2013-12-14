@@ -47,3 +47,14 @@ pre {
 }
 
 // only apply these to headings within the main content
+.m-container h2 {
+  font-family: $font-head;
+  font-style: italic;
+  text-shadow: 1px 1px 0px darken($bg-color, 10%);
+  color: $primary;
+  font-size: 30px;
+  line-height: 1.1;
+  @media(min-width: $usn-large-medium) {
+    font-size: 40px;
+  }
+}

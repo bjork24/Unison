@@ -2,16 +2,18 @@ $m : ".m-call-to-action";
 
 #{$m} {
   @include clearfix;
-  margin: ($gutter * 2) 0;
+  margin: ($gutter * 2) 0 ($gutter * 1.5);
   text-align: center;
   a {
     display: block;
     width: 100%;
     font-size: 14px;
+    padding: $gutter * .5;
     &:first-child {
       margin-bottom: $gutter * .4;
     }
     @media(min-width: $usn-small-medium) {
+      padding: $gutter;
       width: 47.5%;
       float: right;
       &:first-child {

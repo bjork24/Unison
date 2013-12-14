@@ -20,13 +20,16 @@ module.exports = function (grunt) {
     },
 
     watch: {
-      css: {
-        files: 'scss/**/*.scss',
-        tasks: ['compass'],
-        options: {
+      options: {
           livereload: true,
         },
+      css: {
+        files: 'scss/**/*.scss',
+        tasks: ['compass']
       },
+      html: {
+        files: '*.html'
+      }
     },
 
     jshint: {

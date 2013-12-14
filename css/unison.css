@@ -274,6 +274,22 @@ pre {
   }
 }
 
+/* line 50, ../scss/patterns/_p-base.scss */
+.m-container h2 {
+  font-family: "Josefin Slab", serif;
+  font-style: italic;
+  text-shadow: 1px 1px 0px #d4d4d4;
+  color: #0bc68f;
+  font-size: 30px;
+  line-height: 1.1;
+}
+@media (min-width: 1000px) {
+  /* line 50, ../scss/patterns/_p-base.scss */
+  .m-container h2 {
+    font-size: 40px;
+  }
+}
+
 /* line 3, ../scss/modules/_m-hero.scss */
 .m-hero {
   background-color: #0bc68f;
@@ -392,7 +408,7 @@ pre {
 .m-call-to-action {
   overflow: hidden;
   *zoom: 1;
-  margin: 50px 0;
+  margin: 50px 0 37.5px;
   text-align: center;
 }
 /* line 7, ../scss/_m-call-to-action.scss */
@@ -400,18 +416,20 @@ pre {
   display: block;
   width: 100%;
   font-size: 14px;
+  padding: 12.5px;
 }
-/* line 11, ../scss/_m-call-to-action.scss */
+/* line 12, ../scss/_m-call-to-action.scss */
 .m-call-to-action a:first-child {
   margin-bottom: 10px;
 }
 @media (min-width: 600px) {
   /* line 7, ../scss/_m-call-to-action.scss */
   .m-call-to-action a {
+    padding: 25px;
     width: 47.5%;
     float: right;
   }
-  /* line 17, ../scss/_m-call-to-action.scss */
+  /* line 19, ../scss/_m-call-to-action.scss */
   .m-call-to-action a:first-child {
     float: left;
   }
