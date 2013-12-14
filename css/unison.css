@@ -192,19 +192,13 @@ body {
   font-family: "Source Sans Pro", sans-serif;
   font-weight: 300;
   color: #444;
-  padding-top: 0;
+  padding-bottom: 75px;
 }
 /* line 20, ../scss/unison.scss */
 body:after {
   display: none;
 }
 /* line 23, ../scss/unison.scss */
-body img {
-  display: block;
-  max-width: 100%;
-  margin: 50px auto;
-}
-/* line 28, ../scss/unison.scss */
 body.show-debug:after {
   font-family: "Source Sans Pro", sans-serif;
   font-size: 14px;
@@ -234,12 +228,13 @@ p {
     font-size: 18px;
   }
 }
-/* line 17, ../scss/patterns/_p-base.scss */
-p b, p strong {
+
+/* line 19, ../scss/patterns/_p-base.scss */
+b, strong {
   font-weight: 600;
 }
 
-/* line 22, ../scss/patterns/_p-base.scss */
+/* line 23, ../scss/patterns/_p-base.scss */
 hr {
   height: 1px;
   border: 0;
@@ -248,7 +243,7 @@ hr {
   margin: 75px auto;
 }
 
-/* line 30, ../scss/patterns/_p-base.scss */
+/* line 31, ../scss/patterns/_p-base.scss */
 pre {
   font-family: Consolas, "Andale Mono WT", "Andale Mono", "Lucida Console", "Lucida Sans Typewriter", "DejaVu Sans Mono", "Bitstream Vera Sans Mono", "Liberation Mono", "Nimbus Mono L", Monaco, "Courier New", Courier, monospace;
   line-height: 1.4;
@@ -260,21 +255,22 @@ pre {
   border-width: 1px 1px 2px;
   border-color: #e1e1e1 #e1e1e1 #c8c8c8;
   font-size: 12px;
+  margin: 25px 0;
 }
 @media (min-width: 400px) {
-  /* line 30, ../scss/patterns/_p-base.scss */
+  /* line 31, ../scss/patterns/_p-base.scss */
   pre {
     font-size: 14px;
   }
 }
 @media (min-width: 600px) {
-  /* line 30, ../scss/patterns/_p-base.scss */
+  /* line 31, ../scss/patterns/_p-base.scss */
   pre {
     font-size: 16px;
   }
 }
 
-/* line 50, ../scss/patterns/_p-base.scss */
+/* line 52, ../scss/patterns/_p-base.scss */
 .m-container h2 {
   font-family: "Josefin Slab", serif;
   font-style: italic;
@@ -282,9 +278,10 @@ pre {
   color: #0bc68f;
   font-size: 30px;
   line-height: 1.1;
+  margin: 25px 0;
 }
 @media (min-width: 1000px) {
-  /* line 50, ../scss/patterns/_p-base.scss */
+  /* line 52, ../scss/patterns/_p-base.scss */
   .m-container h2 {
     font-size: 40px;
   }
@@ -445,4 +442,36 @@ pre {
   .m-call-to-action a {
     font-size: 20px;
   }
+}
+
+/* line 3, ../scss/modules/_m-bjork.scss */
+.m-bjork {
+  margin: 0 auto;
+}
+/* line 5, ../scss/modules/_m-bjork.scss */
+.m-bjork img {
+  display: block;
+  max-width: 100%;
+}
+/* line 9, ../scss/modules/_m-bjork.scss */
+.m-bjork cite {
+  line-height: 1.4;
+  font-size: 16px;
+  display: block;
+  background-color: #ce534d;
+  padding: 25px;
+  color: #FFF;
+  text-shadow: 1px 1px 0px #8e2c27;
+}
+/* line 18, ../scss/modules/_m-bjork.scss */
+.m-bjork.large {
+  max-width: 800px;
+}
+/* line 21, ../scss/modules/_m-bjork.scss */
+.m-bjork.medium {
+  max-width: 600px;
+}
+/* line 24, ../scss/modules/_m-bjork.scss */
+.m-bjork.small {
+  max-width: 400px;
 }

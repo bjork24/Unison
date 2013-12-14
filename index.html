@@ -37,26 +37,37 @@ $poof-large           : 1200px;
 $poof-x-large         : 1400px;
 </pre>
 
+    <h2>Conditional loading</h2>
+
     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus, porro, quasi esse quo dolorem saepe maiores voluptatem et sint beatae dolore mollitia eveniet debitis eos dolores laboriosam odit. Suscipit, praesentium.</p>
 
     <div data-usn-load-if="usn-large" id="large-bjork">
       <!--
       <hr/>
-      <img src="http://i.imgur.com/rzPyzii.jpg" />
+      <div class="m-bjork large">
+        <img src="img/large.jpg" />
+        <cite>This is a <strong>large</strong> picture of Björk that only loads if the screen is larger than the <strong>usn-large</strong> breakpoint.</cite>
+      </div>
       -->
     </div>
 
     <div data-usn-load-if="usn-medium">
       <!--
       <hr/>
-      <img src="http://i.imgur.com/zmDtR8V.jpg" />
+      <div class="m-bjork medium">
+        <img src="img/medium.jpg" />
+        <cite>This is a <strong>medium</strong> picture of Björk that only loads if the screen is larger than the <strong>usn-medium</strong> breakpoint.</cite>
+      </div>
       -->
     </div>
 
     <div data-usn-load-if="usn-small" id="small-bjork">
       <!--
       <hr/>
-      <img src="http://i.imgur.com/AgzE7AW.jpg" />
+      <div class="m-bjork small">
+        <img src="img/small.jpg" />
+        <cite>This is a <strong>small</strong> picture of Björk that only loads if the screen is larger than the <strong>usn-small</strong> breakpoint.</cite>
+      </div>
       -->
     </div>
 
