@@ -27,6 +27,7 @@ $m : ".m-hero";
     font-family: $font-body;
     color: #FFF;
     font-size: 12px;
+    font-weight: 300;
     letter-spacing: 0.1em;
     line-height: 1.5;
     background-color: darken($primary, 5%);
@@ -39,4 +40,8 @@ $m : ".m-hero";
       font-size: 14px;
     }
   }
+}
+
+.show-debug #{$m} {
+  padding-top: $gutter * 2;
 }

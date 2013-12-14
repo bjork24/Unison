@@ -1,4 +1,5 @@
 @import "compass/reset";
+@import "compass/utilities/general/clearfix";
 @import "mixins";
 @import "breakpoints";
 
@@ -13,6 +14,7 @@ html {
 
 body {
   font-family: $font-body;
+  font-weight: 300;
   color: #444;
   padding-top: 0;
   &:after {
@@ -23,13 +25,10 @@ body {
     max-width: 100%;
     margin: ($gutter * 2) auto;
   }
-  &.show-debug {
-    padding-top: $gutter;
-    &:after {
-      font-family: $font-body;
-      font-size: 14px;
-      display: block;
-    }
+  &.show-debug:after {
+    font-family: $font-body;
+    font-size: 14px;
+    display: block;
   }
 }
 

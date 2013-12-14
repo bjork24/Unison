@@ -14,6 +14,9 @@ p {
   @media(min-width: $usn-small-medium) {
     font-size: 18px;
   }
+  b, strong {
+    font-weight: 600;
+  }
 }
 
 hr {

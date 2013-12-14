@@ -1,8 +1,9 @@
 $font-head: "Josefin Slab", serif;
-$font-body: "Pontano Sans", sans-serif;
+$font-body: "Source Sans Pro", sans-serif;
 $font-pre: Consolas, "Andale Mono WT", "Andale Mono", "Lucida Console", "Lucida Sans Typewriter", "DejaVu Sans Mono", "Bitstream Vera Sans Mono", "Liberation Mono", "Nimbus Mono L", Monaco, "Courier New", Courier, monospace;
 $bg-color: #EEE;
 $primary: #0BC68F;
+$secondary: #CE534D;
 $gutter: 25px;
 
 @mixin transition($transition-property, $transition-time, $tween) {
