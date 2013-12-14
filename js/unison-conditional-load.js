@@ -7,29 +7,29 @@ Unison.ConditionalLoad = (function() {
   // config attributes
   var usnCL = {
     trigger : 'data-usn-load-if',
-    mqs : {},
+    breakpoints : {},
     noMatchMediaSize : '800px'
   };
 
   // cache responsive comments nodes and breakpoint data
   var cacheNodes = function(nodes) {
-    var l = nodes.length, mqs = [], el, obj, i = 0;
+    var l = nodes.length, breakpoints = [], el, obj, i = 0;
     for( ; i < l; i++ ) {
       el = nodes[i];
       obj = {
         'element' : el,
         'breakpoint' :  el.getAttribute(usnCL.trigger)
       };
-      mqs.push(obj);
+      breakpoints.push(obj);
     }
-    usnCL.mqs = Unison.getBreakpoint(true);
-    return mqs;
+    usnCL.breakpoints = Unison.getBreakpoints().allBP;
+    return breakpoints;
   };
 
   // test nodes against named breakpoints
   var testNodes = function() {
     this.forEach(function(node) {
-      var mediaMatch = ( !window.matchMedia ) ? noMatchMediaSize : usnCL.mqs[node.breakpoint] ;
+      var mediaMatch = ( !window.matchMedia ) ? noMatchMediaSize : usnCL.breakpoints[node.breakpoint] ;
       if( window.matchMedia('(min-width: ' + mediaMatch + ')').matches && node.element.getAttribute('title') !== 'loaded' ) {
         insertNode.apply(node);
         return;
