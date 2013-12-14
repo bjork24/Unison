@@ -1,5 +1,5 @@
 a {
-  color: $primary;
+  color: darken($primary, 10%);
   text-decoration: none;
   border-bottom: 1px dotted darken($bg-color, 10%);
   &:hover {
