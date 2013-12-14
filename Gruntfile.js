@@ -95,7 +95,7 @@ module.exports = function (grunt) {
           'mv scss/ css/',
           'rm -rf css/modules/ css/patterns/ css/_mixins.scss css/unison.scss',
           'git status',
-          'git add -all',
+          'git add --all',
           'git status',
           'git commit -m "Pull new dist from gh-pages"',
           'git push',
