@@ -62,6 +62,10 @@ $mq-sync:
 
     <p>And that's all there is to it! Your named breakspaces are now available in any of your javascript files. To test, open your javascript console and type <em>Unison.getBreakpoints()</em>. If everything is set up correctly, the console will return two objects: one with your current breakpoint's name and value, and a second containing a hash of the other breakpoints you declared in your <em>_breakpoints.scss</em> file.</p>
 
+    <h2>Behind the scenes</h2>
+
+    <p>The <em>_breakpoints.scss</em> file is using the <em>font-family</em> property on the page's <em>head</em> and <em>title</em> tags to store information. For each breakpoint you set, the current value is set and updated on your <em>head</em> tag, while the full hash of breakpoints is stored in the <em>title</em> tag. <strong>Unison.js</strong> simply parses the <em>font-family</em> property of each tag and stores them as a globally-accessible object. Simple and efficient!</p>
+
     <h2>Interacting with breakpoint data</h2>
 
     <p>While building out your responsive design, it's helpful to see which breakpoint you're currently working with, and <strong>Unison.js</strong> makes that data easily available. Simply set <em>$debug: true;</em> in your <em>_breakpoints.scss</em> file and your current breakpoint data will be appended to your page for easy debugging. To see this in action, click the "Toggle breakpoint info" button at the top of the page and resize your browser.</p>
