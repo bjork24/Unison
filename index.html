@@ -28,7 +28,7 @@
 
     <h2>How does it work</h2>
 
-    <p>To take full advantage of <strong>Unison.js</strong>, you'll need to be using a css pre-processor such as <a href="http://sass-lang.com/" target="_blank">SASS</a>, <a href="http://lesscss.org/" target="_blank">LESS</a>, <a href="http://learnboost.github.io/stylus/" target="_blank">Stylus</a>. Currently, Unison is only set up to use SASS, but LESS and Stylus implimentations are on the way. To begin, declare your breakpoints in your <a href="https://github.com/bjork24/Unison/blob/master/css/_breakpoints.scss#L4-L11" target="_blank"><em>_breakpoints.scss</em></a> partial as you normally would:</p>
+    <p>To take full advantage of <strong>Unison.js</strong>, you'll need to be using a css pre-processor such as <a href="http://sass-lang.com/" target="_blank">SASS</a>, <a href="http://lesscss.org/" target="_blank">LESS</a>, or <a href="http://learnboost.github.io/stylus/" target="_blank">Stylus</a>. Currently, Unison is only set up to use SASS, but LESS and Stylus implimentations are on the way. To begin, declare your breakpoints in your <a href="https://github.com/bjork24/Unison/blob/master/css/_breakpoints.scss#L4-L11" target="_blank"><em>_breakpoints.scss</em></a> partial as you normally would:</p>
 
 <pre>
 $usn-x-small         : 200px;
@@ -121,8 +121,6 @@ var currentBPval = Unison.getBreakpoints().currentBP.width;
 &lt;/div>
 </pre>
 
-    <p><strong>NOTE:</strong> If you resize your browser back and forth, you will notice that the larger photos load in once you pass a breakpoint, but don't disappear when you resize to a smaller width. That's intended behavior. Conditional loading is not a replacement for media queries; it's sole responsibility is loading in content when a breakpoint is met, not hiding it at smaller sizes.</p>
-
     <div data-usn-load-if="usn-large" id="large-bjork">
       <!--
       <hr/>
@@ -154,6 +152,8 @@ var currentBPval = Unison.getBreakpoints().currentBP.width;
       -->
     </div>
 
+    <p><strong>NOTE:</strong> If you resize your browser back and forth, you will notice that the larger photos load in once you pass a breakpoint, but don't disappear when you resize to a smaller width. That's intended behavior. Conditional loading is not a replacement for media queries; it's sole responsibility is loading in content when a breakpoint is met, not hiding it at smaller sizes.</p>
+
     <p>Another powerful feature of Responsive Comments is the ability to tie custom events to conditionally-loaded content. We've added IDs to the largest and smallest Björk pictures, and fire a message to the console whenever they're successfully loaded into the DOM.</p>
 
 <pre>
@@ -165,9 +165,44 @@ document.getElementById('small-bjork').addEventListener('unisonResponse', functi
 });
 </pre>
 
+  <h2>Acknowledgements</h2>
+
+  <p><strong>Unison.js</strong> is influenced by <a href="http://www.brettjankord.com/" target="_blank">Brett Jankord's</a> <a href="https://github.com/bjankord/Media-Query-Sync" target="_blank">Media Query Sync</a>.</p>
+
+  <h2>Roadmap</h2>
+
+  <ul>
+    <li>Full browser testing</li>
+    <li>LESS and Stylus breakpoints</li>
+    <li>Responsive images plugin</li>
+  </ul>
+
   <h2>Disclaimer</h2>
 
   <p>This plugin should be considered beta. We haven't had a chance to test it fully across older browsers, but it should perform fine on modern browsers. Also, since the <em>unison-responsive-comments.js</em> plugin relies on <em>matchMedia</em>, you will need to use a polyfill for IE9 and below compatability, or set the <em>noMatchMediaSize</em> variable to the size of screen you'd like the script to default to for non-compliant browsers.</p>
+
+  <h2>License</h2>
+
+  <p>The MIT License (MIT)</p>
+
+  <p>Copyright (c) 2013 <a href="http://www.danchilton.com" target="_blank">Dan Chilton</a></p>
+
+  <p>Permission is hereby granted, free of charge, to any person obtaining a copy of
+  this software and associated documentation files (the "Software"), to deal in
+  the Software without restriction, including without limitation the rights to
+  use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of
+  the Software, and to permit persons to whom the Software is furnished to do so,
+  subject to the following conditions:</p>
+
+  <p>The above copyright notice and this permission notice shall be included in all
+  copies or substantial portions of the Software.</p>
+
+  <p>THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS
+  FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR
+  COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER
+  IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
+  CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.</p>
 
   </div>
 

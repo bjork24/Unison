@@ -7,7 +7,7 @@ a {
   }
 }
 
-p {
+p, ul {
   font-size: 16px;
   line-height: 1.5;
   margin: $gutter 0;
@@ -23,6 +23,13 @@ p {
     @media(min-width: $usn-small-medium) {
       font-size: 16px;
     }
+  }
+}
+
+ul {
+  padding-left: $gutter;
+  li {
+    list-style-type: square;
   }
 }
 
