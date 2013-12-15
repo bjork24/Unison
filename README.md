@@ -1,4 +1,4 @@
-Unison
+Unison.js
 ========
 
-Syncing named breakpoints across CSS, JavaScript, and markup; and client-side conditional loading to boot!
+More information at [http://bjork24.github.io/Unison](http://bjork24.github.io/Unison) or [https://github.com/bjork24/Unison/tree/master](https://github.com/bjork24/Unison/tree/master)
