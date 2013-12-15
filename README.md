@@ -43,7 +43,7 @@ Verify everything is working by entering `Unison.getBreakpoints()` in the javasc
 Unison Responsive Comments
 ==========================
 
-Please view the [demo page](http://bjork24.github.io/Unison) to see how Responsive Comments conditionally loading is implimented via Unison.
+Please view the [demo page](http://bjork24.github.io/Unison) to see how Responsive Comments conditional loading is implimented via Unison.
 
 License
 =======
