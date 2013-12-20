@@ -1,0 +1,67 @@
+// config
+@debug: true;
+
+// declare breakpoints
+@usn-x-small         : 200px;
+@usn-small           : 400px;
+@usn-small-medium    : 600px;
+@usn-medium          : 800px;
+@usn-large-medium    : 1000px;
+@usn-large           : 1200px;
+@usn-x-large         : 1400px;
+
+// create list to pass media query data
+// if a breakpoint name changes, remember to
+// update it in the list below as well
+@breakpoints: "usn-x-small @{usn-x-small}",
+              "usn-small @{usn-small}",
+              "usn-small-medium @{usn-small-medium}",
+              "usn-medium @{usn-small-medium}",
+              "usn-large-medium @{usn-large-medium}",
+              "usn-large @{usn-large}",
+              "usn-x-large @{usn-x-large}";
+
+// you need to explicity tell LESS how many
+// breakpoints you have
+@number-of-breakpoints: 7;
+
+// build each media query for js ingestion
+.loopingClass(@number-of-breakpoints);
+.loopingClass(@index) when (@index > 0) {
+    .loopingClass(@index - 1);
+    @breakpoint-info: extract(@breakpoints, @index);
+    @breakpoint-size: ~`@{breakpoint-info}.split(' ')[1].replace('"','')`;
+    @media screen and (min-width: @breakpoint-size) {
+        head { font-family: @breakpoint-info; }
+        body:after { content: @breakpoint-info; }
+    }
+}
+
+// store hash of all breakpoints
+head title { font-family: ~"@{breakpoints}"; }
+
+// debug styles to see breakpoint info
+body:after {
+  display: none;
+  .debug-styles(@debug);
+}
+
+.debug-styles(@d) when (@d) {
+  display: block;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: #000;
+  background-color: rgba(0,0,0,0.8);
+  text-align: center;
+  color: #FFF;
+  padding: 10px;
+  z-index: 1000;
+  font-size: 12px;
+  font-family: sans-serif;
+}
+
+// hide elements for conditional loading
+// only used for responsive comments plugin
+*[data-usn-if] { display: none; }
