@@ -84,6 +84,18 @@ module.exports = function (grunt) {
       },
     },
 
+    stylus: {
+      compile: {
+        options: {
+          paths: ["stylus"],
+          compress: false
+        },
+        files: {
+          'css/breakpoints-stylus.css': 'stylus/breakpoints.styl'
+        }
+      }
+    },
+
     concurrent: {
       target: {
         tasks: ['connect', 'compass', 'watch'],
