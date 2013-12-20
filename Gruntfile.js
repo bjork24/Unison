@@ -79,7 +79,7 @@ module.exports = function (grunt) {
           paths: ["less"]
         },
         files: {
-          "css/unison-less.css": "less/breakpoints.less"
+          "css/breakpoints-less.css": "less/breakpoints.less"
         }
       },
     },
