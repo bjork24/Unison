@@ -2,6 +2,7 @@
 @debug: true;
 
 // declare breakpoints
+@usn-x-small         : 200px;
 @usn-small           : 400px;
 @usn-small-medium    : 600px;
 @usn-medium          : 800px;
@@ -12,7 +13,8 @@
 // create list to pass media query data
 // if a breakpoint name changes, remember to
 // update it in the list below as well
-@breakpoints: "usn-small @{usn-small}",
+@breakpoints: "usn-x-small @{usn-x-small}",
+              "usn-small @{usn-small}",
               "usn-small-medium @{usn-small-medium}",
               "usn-medium @{usn-small-medium}",
               "usn-large-medium @{usn-large-medium}",
@@ -21,7 +23,7 @@
 
 // you need to explicity tell LESS how many
 // breakpoints you have
-@number-of-breakpoints: 6;
+@number-of-breakpoints: 7;
 
 // build each media query for js ingestion
 .loopingClass(@number-of-breakpoints);
