@@ -21,8 +21,8 @@ module.exports = function (grunt) {
 
     watch: {
       options: {
-          livereload: true,
-        },
+        livereload: true,
+      },
       css: {
         files: 'scss/**/*.scss',
         tasks: ['compass']
@@ -68,9 +68,20 @@ module.exports = function (grunt) {
           cssDir: 'css',
           trace: true,
           force: true,
-          outputStyle: 'compressed'
+          outputStyle: 'expanded'
         }
       }
+    },
+
+    less: {
+      development: {
+        options: {
+          paths: ["less"]
+        },
+        files: {
+          "css/unison-less.css": "less/breakpoints.less"
+        }
+      },
     },
 
     concurrent: {
@@ -88,26 +99,26 @@ module.exports = function (grunt) {
       },
       pushToMaster: {
         command: [
-          'git checkout master',
-          'rm -rf css/ js/',
-          'git checkout gh-pages -- js',
-          'rm -rf js/demo.js js/page.min.js',
-          'git checkout gh-pages -- scss',
-          'mv scss/ css/',
-          'rm -rf css/modules/ css/patterns/ css/_mixins.scss css/unison.scss',
-          'git status',
-          'git add --all',
-          'git status',
-          'git commit -m "Pull new dist from gh-pages"',
-          'git push',
-          'git co gh-pages'
+        'git checkout master',
+        'rm -rf css/ js/',
+        'git checkout gh-pages -- js',
+        'rm -rf js/demo.js js/page.min.js',
+        'git checkout gh-pages -- scss',
+        'mv scss/ css/',
+        'rm -rf css/modules/ css/patterns/ css/_mixins.scss css/unison.scss',
+        'git status',
+        'git add --all',
+        'git status',
+        'git commit -m "Pull new dist from gh-pages"',
+        'git push',
+        'git co gh-pages'
         ].join('&&')
       }
     }
 
   });
 
-  grunt.registerTask('server', ['concurrent:target']);
-  grunt.registerTask('dist', ['shell:pushToMaster']);
+grunt.registerTask('server', ['concurrent:target']);
+grunt.registerTask('dist', ['shell:pushToMaster']);
 
 };

@@ -1,0 +1,67 @@
+@media screen and (min-width: 400px) {
+  head {
+    font-family: "usn-small 400px";
+  }
+  body:after {
+    content: "usn-small 400px";
+  }
+}
+@media screen and (min-width: 600px) {
+  head {
+    font-family: "usn-small-medium 600px";
+  }
+  body:after {
+    content: "usn-small-medium 600px";
+  }
+}
+@media screen and (min-width: 600px) {
+  head {
+    font-family: "usn-medium 600px";
+  }
+  body:after {
+    content: "usn-medium 600px";
+  }
+}
+@media screen and (min-width: 1000px) {
+  head {
+    font-family: "usn-large-medium 1000px";
+  }
+  body:after {
+    content: "usn-large-medium 1000px";
+  }
+}
+@media screen and (min-width: 1200px) {
+  head {
+    font-family: "usn-large 1200px";
+  }
+  body:after {
+    content: "usn-large 1200px";
+  }
+}
+@media screen and (min-width: 1400px) {
+  head {
+    font-family: "usn-x-large 1400px";
+  }
+  body:after {
+    content: "usn-x-large 1400px";
+  }
+}
+head title {
+  font-family: "usn-small 400px", "usn-small-medium 600px", "usn-medium 600px", "usn-large-medium 1000px", "usn-large 1200px", "usn-x-large 1400px";
+}
+body:after {
+  display: none;
+  display: block;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: #000;
+  background-color: rgba(0, 0, 0, 0.8);
+  text-align: center;
+  color: #FFF;
+  padding: 10px;
+  z-index: 1000;
+  font-size: 12px;
+  font-family: sans-serif;
+}

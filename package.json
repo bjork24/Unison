@@ -19,6 +19,7 @@
     "grunt-notify": "~0.2.16",
     "grunt-concurrent": "~0.4.2",
     "matchdep": "~0.3.0",
-    "grunt-shell": "~0.6.1"
+    "grunt-shell": "~0.6.1",
+    "grunt-contrib-less": "~0.8.3"
   }
 }
