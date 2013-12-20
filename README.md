@@ -5,8 +5,8 @@ Syncing named breakpoints across CSS, JS, and HTML.
 
 Demo and more information [here](http://bjork24.github.io/Unison).
 
-Installation
-============
+SASS Integration
+================
 
 Declare breakpoints and specify names in `_breakpoints.scss`
 
@@ -33,6 +33,40 @@ $mq-sync:
   usn-x-large        $usn-x-large
 ;
 ```
+
+LESS Integration
+================
+
+Declase breakpoints and specify names in `breakpoints.less`
+
+```less
+// declare breakpoints
+@usn-x-small         : 200px;
+@usn-small           : 400px;
+@usn-small-medium    : 600px;
+@usn-medium          : 800px;
+@usn-large-medium    : 1000px;
+@usn-large           : 1200px;
+@usn-x-large         : 1400px;
+
+// create list to pass media query data
+// if a breakpoint name changes, remember to
+// update it in the list below as well
+@breakpoints: "usn-x-small @{usn-x-small}",
+              "usn-small @{usn-small}",
+              "usn-small-medium @{usn-small-medium}",
+              "usn-medium @{usn-small-medium}",
+              "usn-large-medium @{usn-large-medium}",
+              "usn-large @{usn-large}",
+              "usn-x-large @{usn-x-large}";
+
+// you need to explicity tell LESS how many
+// breakpoints you have
+@number-of-breakpoints: 7;
+```
+
+Installation
+============
 
 Include `unison.min.js` on your page:
 
