@@ -65,6 +65,33 @@ Declase breakpoints and specify names in `breakpoints.less`
 @number-of-breakpoints: 7;
 ```
 
+Stylus Integration
+==================
+
+Declase breakpoints and specify names in `breakpoints.styl`
+
+```styl
+// declare breakpoints
+$usn-x-small         = 200px
+$usn-small           = 400px
+$usn-small-medium    = 600px
+$usn-medium          = 800px
+$usn-large-medium    = 1000px
+$usn-large           = 1200px
+$usn-x-large         = 1400px
+
+// create list to pass media query data
+// if a breakpoint name changes, remember to
+// update it in the list below as well
+$mq-sync = usn-x-small        $usn-x-small,
+           usn-small          $usn-small,
+           usn-small-medium   $usn-small-medium,
+           usn-medium         $usn-medium,
+           usn-large-medium   $usn-large-medium,
+           usn-large          $usn-large,
+           usn-x-large        $usn-x-large
+```
+
 Installation
 ============
 
