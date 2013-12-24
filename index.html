@@ -29,7 +29,7 @@
 
     <h2>How does it work</h2>
 
-    <p>To take full advantage of <strong>Unison.js</strong>, you'll need to be using a css pre-processor such as <a href="http://sass-lang.com/" target="_blank">SASS</a>, <a href="http://lesscss.org/" target="_blank">LESS</a>, or <a href="http://learnboost.github.io/stylus/" target="_blank">Stylus</a>. Currently, Unison currently works with SASS and LESS, and Stylus implimentation is on the way. To begin, declare your breakpoints in your breakpoints partial as you normally would:</p>
+    <p>To take full advantage of <strong>Unison.js</strong>, you'll need to be using a css pre-processor such as <a href="http://sass-lang.com/" target="_blank">SASS</a>, <a href="http://lesscss.org/" target="_blank">LESS</a>, or <a href="http://learnboost.github.io/stylus/" target="_blank">Stylus</a>. To begin, declare your breakpoints in your breakpoints partial as you normally would:</p>
 
 <pre>
 // SASS
@@ -41,7 +41,7 @@ $usn-large-medium    : 1000px;
 $usn-large           : 1200px;
 $usn-x-large         : 1400px;
 
-//LESS
+// LESS
 @usn-x-small         : 200px;
 @usn-small           : 400px;
 @usn-small-medium    : 600px;
@@ -49,6 +49,15 @@ $usn-x-large         : 1400px;
 @usn-large-medium    : 1000px;
 @usn-large           : 1200px;
 @usn-x-large         : 1400px;
+
+// STYLUS
+$usn-x-small         = 200px
+$usn-small           = 400px
+$usn-small-medium    = 600px
+$usn-medium          = 800px
+$usn-large-medium    = 1000px
+$usn-large           = 1200px
+$usn-x-large         = 1400px
 </pre>
 
     <p>These are the breakpoint names that you'll use in your markup and javascript to trigger events as well. This is the only place in your project that you'll need to declare your breakpoints. Whenever these values change, they'll be synced across your code automatically. After you've declared your breakpoints, you'll need to include the names in a second block so the CSS can pass them to the javascript.</p>
@@ -73,6 +82,15 @@ $mq-sync:
               "usn-large-medium @{usn-large-medium}",
               "usn-large @{usn-large}",
               "usn-x-large @{usn-x-large}";
+
+// STYLUS
+$mq-sync = usn-x-small        $usn-x-small,
+           usn-small          $usn-small,
+           usn-small-medium   $usn-small-medium,
+           usn-medium         $usn-medium,
+           usn-large-medium   $usn-large-medium,
+           usn-large          $usn-large,
+           usn-x-large        $usn-x-large
 </pre>
 
     <p>This bit of code may look redundant, but it's required to broadcast the names of each breakpoint outside of your stylesheet. As mentioned in the comments of the breakpoint file, if you ever change the name of your break point, you'll have to update it in this block as well. Once you've named and declared your breakpoints, place the <strong>Unison.js</strong> script on your page:</p>
@@ -198,8 +216,7 @@ document.getElementById('small-bjork').addEventListener('unisonResponse', functi
 
   <ul>
     <li>Full browser testing</li>
-    <li>Stylus breakpoints</li>
-    <li>Responsive images plugin</li>
+    <li>Ender module</li>
   </ul>
 
   <h2>Disclaimer</h2>

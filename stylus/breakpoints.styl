@@ -1,5 +1,7 @@
+// config
 $debug = true
 
+// declare breakpoints
 $usn-x-small         = 200px
 $usn-small           = 400px
 $usn-small-medium    = 600px
@@ -8,6 +10,9 @@ $usn-large-medium    = 1000px
 $usn-large           = 1200px
 $usn-x-large         = 1400px
 
+// create list to pass media query data
+// if a breakpoint name changes, remember to
+// update it in the list below as well
 $mq-sync = usn-x-small        $usn-x-small,
            usn-small          $usn-small,
            usn-small-medium   $usn-small-medium,
@@ -16,12 +21,35 @@ $mq-sync = usn-x-small        $usn-x-small,
            usn-large          $usn-large,
            usn-x-large        $usn-x-large
 
-my-colors = usn-x-small       $usn-x-small,
-            usn-small         $usn-small
-
+// build each media query for js ingestion
 for mq in $mq-sync
-  @media screen and (min-width: pair[1])
-    body
-      background-color white
-  .{mq[0]}
-    color mq[1]
+  media-logic = "screen and (min-width: " + mq[1] + ")"
+  @media media-logic
+    s('head { font-family: "%s %s"; }', mq[0], mq[1]);
+    s('body:after { content: "%s - min-width: %s"; }', mq[0], mq[1]);
+
+// store hash of all breakpoints
+s('head title { font-family: "%s"; }', $mq-sync)
+
+// debug styles to see breakpoint info
+body:after
+  display none
+  if $debug
+    display block
+    position fixed
+    top 0
+    left 0
+    width 100%
+    background-color #000
+    background-color rgba(0,0,0,0.8)
+    text-align center
+    color #FFF
+    padding 10px
+    z-index 1000
+    font-size 12px
+    font-family sans-serif
+
+// hide elements for conditional loading
+// only used for responsive comments plugin
+*[data-usn-if]
+  display none
