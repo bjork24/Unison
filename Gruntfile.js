@@ -117,7 +117,7 @@ module.exports = function (grunt) {
         'rm -rf js/demo.js js/page.min.js',
         'git checkout gh-pages -- scss',
         'mv scss/ css/',
-        'rm -rf css/modules/ css/patterns/ css/_mixins.scss css/unison.scss',
+        'rm -rf css/modules/ css/patterns/ css/_mixins.scss css/unison.scss css/breakpoints.scss',
         'git checkout gh-pages -- less',
         'mv less/breakpoints.less css/breakpoints.less',
         'rm -rf less/',
