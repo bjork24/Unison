@@ -31,8 +31,12 @@ $mq-sync:
   }
 }
 
-// store hash of all breakpoints
-head title { font-family: "#{$mq-sync}"; }
+head {
+  // set clear on head to show Unison is set up correctly
+  clear: both;
+  // store hash of all breakpoints
+  title { font-family: "#{$mq-sync}"; }
+}
 
 // debug styles to see breakpoint info
 body:after {

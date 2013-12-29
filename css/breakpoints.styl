@@ -31,6 +31,10 @@ for mq in $mq-sync
 // store hash of all breakpoints
 s('head title { font-family: "%s"; }', $mq-sync)
 
+// set clear on head to show Unison is set up correctly
+head
+  clear both
+
 // debug styles to see breakpoint info
 body:after
   display none
