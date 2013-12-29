@@ -99,7 +99,8 @@ Include `unison.min.js` on your page:
 
 `<script src="unison.min.js"></script>`
 
-Verify everything is working by entering `Unison.getBreakpoints()` in the javascript console of your browser.
+Verify everything is working by entering `Unison.getBreakpoints()` in the javascript console of your browser. If the CSS is not set up 
+properly, the returned value will be `null`.
 
 Unison Responsive Comments
 ==========================
