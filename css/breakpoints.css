@@ -75,17 +75,21 @@
     content: "usn-x-large - min-width: 1400px";
   }
 }
-/* line 35, ../scss/_breakpoints.scss */
+/* line 34, ../scss/_breakpoints.scss */
+head {
+  clear: both;
+}
+/* line 38, ../scss/_breakpoints.scss */
 head title {
   font-family: "usn-x-small 200px, usn-small 400px, usn-small-medium 600px, usn-medium 800px, usn-large-medium 1000px, usn-large 1200px, usn-x-large 1400px";
 }
 
-/* line 38, ../scss/_breakpoints.scss */
+/* line 42, ../scss/_breakpoints.scss */
 body:after {
   display: none;
 }
 
-/* line 43, ../scss/_breakpoints.scss */
+/* line 47, ../scss/_breakpoints.scss */
 body:after {
   display: block;
   position: fixed;
@@ -102,7 +106,7 @@ body:after {
   font-family: sans-serif;
 }
 
-/* line 62, ../scss/_breakpoints.scss */
+/* line 66, ../scss/_breakpoints.scss */
 *[data-usn-if] {
   display: none;
 }

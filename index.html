@@ -25,7 +25,7 @@
 
     <h2>What is Unison.js</h2>
 
-    <p><strong>Unison.js</strong> is a small plugin (450 bytes minified, 144 bytes gzipped) that allows you to declare named breakpoints in one place and automatically sync them across your javascript and markup. When all of your front-end technologies share breakpoint information, complex responsive tasks such as conditional loading and image swapping become much simpler and straight-forward.</p>
+    <p><strong>Unison.js</strong> is a small plugin (533 bytes minified, 164 bytes gzipped) that allows you to declare named breakpoints in one place and automatically sync them across your javascript and markup. When all of your front-end technologies share breakpoint information, complex responsive tasks such as conditional loading and image swapping become much simpler and straight-forward.</p>
 
     <h2>How does it work</h2>
 
@@ -99,15 +99,15 @@ $mq-sync = usn-x-small        $usn-x-small,
 &lt;script src="unison.min.js">&lt;/script>
 </pre>
 
-    <p>And that's all there is to it! Your named breakspaces are now available in any of your javascript files. To test, open your javascript console and type <em>Unison.getBreakpoints()</em>. If everything is set up correctly, the console will return two objects: one with your current breakpoint's name and value, and a second containing a hash of the other breakpoints you declared in your <em>_breakpoints.scss</em> file.</p>
+    <p>And that's all there is to it! Your named breakspaces are now available in any of your javascript files. To test, open your javascript console and type <em>Unison.getBreakpoints()</em>. If everything is set up correctly, the console will return two objects: one with your current breakpoint's name and value, and a second containing a hash of the other breakpoints you declared in your <em>breakpoints</em> file. If your CSS is not correctly passing breakpoint variables, <em>Unison.getBreakpoints()</em> will return <em>null</em>.</p>
 
     <h2>Behind the scenes</h2>
 
-    <p>The <em>_breakpoints.scss</em> file is using the <em>font-family</em> property on the page's <em>head</em> and <em>title</em> tags to store information. For each breakpoint you set, the current value is set and updated on your <em>head</em> tag, while the full hash of breakpoints is stored in the <em>title</em> tag. <strong>Unison.js</strong> simply parses the <em>font-family</em> property of each tag and stores them as a globally-accessible object. Simple and efficient!</p>
+    <p>The <em>breakpoints</em> file is using the <em>font-family</em> property on the page's <em>head</em> and <em>title</em> tags to store information. For each breakpoint you set, the current value is set and updated on your <em>head</em> tag, while the full hash of breakpoints is stored in the <em>title</em> tag. <strong>Unison.js</strong> simply parses the <em>font-family</em> property of each tag and stores them as a globally-accessible object. Simple and efficient!</p>
 
     <h2>Interacting with breakpoint data</h2>
 
-    <p>While building out your responsive design, it's helpful to see which breakpoint you're currently working with, and <strong>Unison.js</strong> makes that data easily available. Simply set <em>$debug: true;</em> in your <em>_breakpoints.scss</em> file and your current breakpoint data will be appended to your page for easy debugging. To see this in action, click the "Toggle breakpoint info" button at the top of the page and resize your browser.</p>
+    <p>While building out your responsive design, it's helpful to see which breakpoint you're currently working with, and <strong>Unison.js</strong> makes that data easily available. Simply set the <em>debug</em> variable to <em>true</em> in your <em>breakpoints</em> file and your current breakpoint data will be appended to your page for easy debugging. To see this in action, click the "Toggle breakpoint info" button at the top of the page and resize your browser.</p>
 
     <p>You can access the breakpoint objects from your javascript by calling <em>Unison.getBreakpoints()</em>, or by chaining off the object to drill down for more specific data.</p>
 

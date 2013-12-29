@@ -54,6 +54,9 @@
     content: "usn-x-large 1400px";
   }
 }
+head {
+  clear: both;
+}
 head title {
   font-family: "usn-x-small 200px", "usn-small 400px", "usn-small-medium 600px", "usn-medium 600px", "usn-large-medium 1000px", "usn-large 1200px", "usn-x-large 1400px";
 }

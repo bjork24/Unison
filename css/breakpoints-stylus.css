@@ -27,6 +27,9 @@ head { font-family: "usn-x-large 1400px"; }
 body:after { content: "usn-x-large - min-width: 1400px"; }
 }
 head title { font-family: "usn-x-small 200px, usn-small 400px, usn-small-medium 600px, usn-medium 800px, usn-large-medium 1000px, usn-large 1200px, usn-x-large 1400px"; }
+head {
+  clear: both;
+}
 body:after {
   display: none;
   display: block;
