@@ -4,7 +4,15 @@ Unison = (function() {
 
   // get breakpoint object
   var getBreakpoints = function(allBreakpoints) {
-    var allBP, currentBP, usnBP = {}, i = 0, doc = document, head = doc.head, win = window, title = head.getElementsByTagName('title')[0];
+    var allBP,
+        currentBP,
+        usnBP = {},
+        i = 0,
+        win = window,
+        doc = document,
+        head = doc.getElementsByTagName('head')[0],
+        title = doc.getElementsByTagName('title')[0];
+
     // check if css is passing breakpoints properly, if not return null for getBreakpoint()
     var unisonReady = ( win.getComputedStyle(head, null).getPropertyValue('clear') === 'none' ) ? false : true ;
     function cleanMQstr(el) {
