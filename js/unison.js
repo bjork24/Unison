@@ -4,15 +4,24 @@ Unison = (function() {
 
   // get breakpoint object
   var getBreakpoints = function(allBreakpoints) {
-    var allBP, currentBP, usnBP = {}, i = 0, doc = document, head = doc.head, win = window;
+    var allBP,
+        currentBP,
+        usnBP = {},
+        i = 0,
+        win = window,
+        doc = document,
+        head = doc.getElementsByTagName('head')[0],
+        title = doc.getElementsByTagName('title')[0];
+
     // check if css is passing breakpoints properly, if not return null for getBreakpoint()
     var unisonReady = ( win.getComputedStyle(head, null).getPropertyValue('clear') === 'none' ) ? false : true ;
     function cleanMQstr(el) {
+      if(!el) { return; }
       var str = win.getComputedStyle(el, null).getPropertyValue('font-family');
       return str.replace(/"/g, '').replace(/'/g, '');
     }
     currentBP = cleanMQstr(head).split(' ');
-    allBP = cleanMQstr(doc.querySelector('title')).split(',');
+    allBP = title ? cleanMQstr(title).split(',') : usnBP;
     usnBP.currentBP = {
       name : currentBP[0],
       width : currentBP[1]
