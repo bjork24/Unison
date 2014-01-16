@@ -100,7 +100,20 @@ Include `unison.min.js` on your page:
 `<script src="unison.min.js"></script>`
 
 Verify everything is working by entering `Unison.getBreakpoints()` in the javascript console of your browser. If the CSS is not set up 
-properly, the returned value will be `null`.
+properly, or your page is missing the title tag, the returned value will be `null`.
+
+Bower Installation
+==================
+
+If you're using Bower:
+
+`bower install unison`
+
+Then point to the script within the `bower_components` directory:
+
+`<script src="bower_components/unison/js/unison.min.js"></script>`
+
+The various preprocessor partials can be found in `bower_components/unison/css/`.
 
 Unison Responsive Comments
 ==========================
