@@ -92,8 +92,8 @@ $mq-sync = usn-x-small        $usn-x-small,
            usn-x-large        $usn-x-large
 ```
 
-Installation
-============
+Manual Installation
+===================
 
 Include `unison.min.js` on your page:
 
