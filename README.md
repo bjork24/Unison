@@ -55,7 +55,7 @@ Declase breakpoints and specify names in `breakpoints.less`
 @breakpoints: "usn-x-small @{usn-x-small}",
               "usn-small @{usn-small}",
               "usn-small-medium @{usn-small-medium}",
-              "usn-medium @{usn-small-medium}",
+              "usn-medium @{usn-medium}",
               "usn-large-medium @{usn-large-medium}",
               "usn-large @{usn-large}",
               "usn-x-large @{usn-x-large}";
