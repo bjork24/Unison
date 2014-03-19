@@ -29,6 +29,10 @@ module.exports = function (grunt) {
       },
       html: {
         files: '*.html'
+      },
+      js: {
+        files: ['js/**/*.js','!js/**/*.min.js'],
+        tasks: ['jshint','uglify:dev']
       }
     },
 
@@ -52,11 +56,15 @@ module.exports = function (grunt) {
       options: {
         report: 'gzip'
       },
-      my_target: {
+      dev: {
+        files: {
+          'js/page.min.js': ['js/unison.js','js/unison-responsive-comments.js','js/demo.js']
+        }
+      },
+      dist: {
         files: {
           'js/unison.min.js': ['js/unison.js'],
-          'js/unison-responsive-comments.min.js': ['js/unison-responsive-comments.js'],
-          'js/page.min.js': ['js/unison.js','js/unison-responsive-comments.js','js/demo.js']
+          'js/unison-responsive-comments.min.js': ['js/unison-responsive-comments.js']
         }
       }
     },

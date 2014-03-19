@@ -29,6 +29,27 @@ Unison = (function() {
     }
   };
 
+  var debounce = function(func, wait, immediate) {
+    var timeout;
+    return function() {
+      var context = this, args = arguments;
+      clearTimeout(timeout);
+      timeout = setTimeout(function() {
+        timeout = null;
+        if (!immediate) {
+          func.apply(context, args);
+        }
+      }, wait);
+      if (immediate && !timeout) {
+        func.apply(context, args);
+      }
+    };
+  };
+
+  window.onresize = debounce(function(event) {
+    getBreakpoints();
+  }, 100);
+
   // return some stuff because people like to see stuff in the console
   return {
     getBreakpoints : getBreakpoints
