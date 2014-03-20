@@ -81,9 +81,9 @@ Unison = (function() {
   };
 
   win.onresize = util.debounce(breakpoints.update, 100);
-  win.onload = breakpoints.update;
   doc.addEventListener('DOMContentLoaded', function(){
     unisonReady = win.getComputedStyle(head, null).getPropertyValue('clear') !== 'none';
+    breakpoints.update();
   });
 
   return {
