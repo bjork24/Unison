@@ -6,7 +6,7 @@ Unison = (function() {
   var doc = document;
   var head = doc.head;
   var eventCache = {};
-  var unisonReady = win.getComputedStyle(head, null).getPropertyValue('clear') !== 'none';
+  var unisonReady = false;
   var currentBP;
 
   var util = {
@@ -82,6 +82,9 @@ Unison = (function() {
 
   win.onresize = util.debounce(breakpoints.update, 100);
   win.onload = breakpoints.update;
+  doc.addEventListener('DOMContentLoaded', function(){
+    unisonReady = win.getComputedStyle(head, null).getPropertyValue('clear') !== 'none';
+  });
 
   return {
     fetch : {
