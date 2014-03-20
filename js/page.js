@@ -4,7 +4,7 @@ Unison = function() {
     var b = document;
     var c = b.head;
     var d = {};
-    var e = a.getComputedStyle(c, null).getPropertyValue("clear") !== "none";
+    var e = false;
     var f;
     var g = {
         parseMQ: function(b) {
@@ -79,7 +79,10 @@ Unison = function() {
         }
     };
     a.onresize = g.debounce(i.update, 100);
-    a.onload = i.update;
+    b.addEventListener("DOMContentLoaded", function() {
+        e = a.getComputedStyle(c, null).getPropertyValue("clear") !== "none";
+        i.update();
+    });
     return {
         fetch: {
             all: i.all,
