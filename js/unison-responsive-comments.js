@@ -2,103 +2,70 @@ Unison = Unison || {};
 
 Unison.ConditionalLoad = (function() {
 
-  "use strict";
+  'use strict';
 
-  // config attributes
-  var usnCL = {
-    trigger : 'data-usn-load-if',
-    breakpoints : {},
-    noMatchMediaSize : '800px'
-  };
+  var win = window;
+  var doc = document;
+  var trigger = 'data-usn-load-if';
+  var nodeCache = {};
+  var BPs = Unison.fetch.all();
+  var BPnames = Object.keys(BPs);
 
-  // cache responsive comments nodes and breakpoint data
-  var cacheNodes = function(nodes) {
-    var l = nodes.length, breakpoints = [], el, obj, i = 0;
-    for( ; i < l; i++ ) {
-      el = nodes[i];
-      obj = {
-        'element' : el,
-        'breakpoint' :  el.getAttribute(usnCL.trigger)
-      };
-      breakpoints.push(obj);
+  var cacheNodes = function(nodesArr) {
+    var nodes = [].slice.call(nodesArr);
+    for ( var i = 0; i < nodes.length; i++ ) {
+      var bp = nodes[i].getAttribute(trigger);
+      if ( !Unison.util.isObject(nodeCache[bp]) ) {
+        nodeCache[bp] = [];
+      }
+      nodeCache[bp].push(nodes[i]);
     }
-    usnCL.breakpoints = Unison.getBreakpoints().allBP;
-    return breakpoints;
   };
 
-  // test nodes against named breakpoints
   var testNodes = function() {
-    this.forEach(function(node) {
-      var mediaMatch = ( !window.matchMedia ) ? noMatchMediaSize : usnCL.breakpoints[node.breakpoint] ;
-      if( window.matchMedia('(min-width: ' + mediaMatch + ')').matches && node.element.getAttribute('title') !== 'loaded' ) {
-        insertNode.apply(node);
-        return;
-      }
-    });
-    return;
-  };
-
-  // loop through nodes and insert comment elements
-  var insertNode = function() {
-    var l = this.element.childNodes.length, i = 0;
-    for( ; i < l; i++ ) {
-      if(this.element.childNodes[i].nodeType === 8) {
-        this.element.insertAdjacentHTML('beforebegin', this.element.childNodes[i].textContent);
-        dispatchEvent.apply(this);
-        this.element.setAttribute('title', 'loaded');
-        this.element.parentElement.removeChild(this.element);
+    var idx = BPnames.indexOf(Unison.fetch.now().name) + 1;
+    var activeBPs = BPnames.slice(0, idx);
+    for ( var i = 0; i < activeBPs.length; i++ ) {
+      var nodes = nodeCache[activeBPs[i]];
+      if ( Unison.util.isObject(nodes) ) {
+        insertNode(nodes);
       }
     }
   };
 
-  // dispatch custom events (needs some work)
-  var dispatchEvent = function() {
-    var ev;
-    if ( typeof CustomEvent === 'function' ) {
-      ev = new CustomEvent('unisonResponse', { detail : {} });
-    } else if( document.createEvent ) {
-      ev = document.createEvent('Event');
-      ev.initEvent('unisonResponse', true, true);
-    } else {
-      return false;
-    }
-    this.element.dispatchEvent(ev);
-  };
-
-  // _.debounce function for resize
-  var debounce = function(func, wait, immediate) {
-    var timeout, args, context, timestamp, result;
-    return function() {
-      context = this;
-      args = arguments;
-      timestamp = new Date();
-      var later = function() {
-        var last = (new Date()) - timestamp;
-        if ( last < wait ) {
-          timeout = setTimeout(later, wait - last);
-        } else {
-          timeout = null;
-          if ( !immediate ) {
-            result = func.apply(context, args);
+  var insertNode = function(nodes) {
+    for ( var i = 0; i < nodes.length; i++ ) {
+      if ( nodes[i].getAttribute('title') !== 'loaded' ) {
+        var parent = nodes[i];
+        var parentId = parent.getAttribute('id');
+        var node = [].slice.call(nodes[i].childNodes);
+        for (var j = 0; j < node.length; j++) {
+          if ( node[j].nodeType === 8 ) {
+            var comment = node[j];
+            parent.insertAdjacentHTML('beforebegin', comment.textContent);
+            parent.setAttribute('title', 'loaded');
+            parent.parentElement.removeChild(parent);
+            if ( parentId !== null ) {
+              Unison.emit(parentId);
+            }
           }
         }
-      };
-      var callNow = immediate && !timeout;
-      if ( !timeout ) {
-        timeout = setTimeout(later, wait);
       }
-      if ( callNow ) {
-        result = func.apply(context, args);
-      }
-      return result;
-    };
+    }
   };
 
-  // initiate when DOM ready
-  document.addEventListener("DOMContentLoaded", function(event) {
-    var nodes = cacheNodes( document.querySelectorAll('[' + usnCL.trigger + ']') );
-    window.addEventListener('resize', debounce(testNodes.bind(nodes), 250));
-    window.addEventListener('load', testNodes.bind(nodes));
+  var loads = function(id, callback) {
+    Unison.on(id, callback);
+  };
+
+  doc.addEventListener("DOMContentLoaded", function(event) {
+    var nodes = cacheNodes( doc.querySelectorAll('[' + trigger + ']') );
+    window.addEventListener('resize', Unison.util.debounce(testNodes, 100));
+    window.addEventListener('load', testNodes);
   });
+
+  return {
+    loads : loads
+  };
 
 })();

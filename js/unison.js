@@ -1,46 +1,99 @@
 Unison = (function() {
 
-  "use strict";
+  'use strict';
 
-  // get breakpoint object
-  var getBreakpoints = function(allBreakpoints) {
-    var allBP,
-        currentBP,
-        usnBP = {},
-        i = 0,
-        win = window,
-        doc = document,
-        head = doc.getElementsByTagName('head')[0],
-        title = doc.getElementsByTagName('title')[0];
+  var win = window;
+  var doc = document;
+  var head = doc.head;
+  var eventCache = {};
+  var unisonReady = win.getComputedStyle(head, null).getPropertyValue('clear') !== 'none';
+  var currentBP;
 
-    // check if css is passing breakpoints properly, if not return null for getBreakpoint()
-    var unisonReady = ( win.getComputedStyle(head, null).getPropertyValue('clear') === 'none' ) ? false : true ;
-    function cleanMQstr(el) {
-      if(!el) { return; }
+  var util = {
+    parseMQ : function(el) {
       var str = win.getComputedStyle(el, null).getPropertyValue('font-family');
       return str.replace(/"/g, '').replace(/'/g, '');
-    }
-    currentBP = cleanMQstr(head).split(' ');
-    allBP = title ? cleanMQstr(title).split(',') : usnBP;
-    usnBP.currentBP = {
-      name : currentBP[0],
-      width : currentBP[1]
-    };
-    usnBP.allBP = {};
-    for ( ; i < allBP.length; i++ ) {
-      var mq = allBP[i].trim().split(' ');
-      usnBP.allBP[mq[0]] = mq[1];
-    }
-    if ( unisonReady ) {
-      return ( typeof allBreakpoints === 'boolean' ) ? usnBP.allBP : usnBP ;
-    } else {
-      return null;
+    },
+    debounce : function(func, wait, immediate) {
+      var timeout;
+      return function() {
+        var context = this, args = arguments;
+        clearTimeout(timeout);
+        timeout = setTimeout(function() {
+          timeout = null;
+          if (!immediate) {
+            func.apply(context, args);
+          }
+        }, wait);
+        if (immediate && !timeout) {
+          func.apply(context, args);
+        }
+      };
+    },
+    isObject : function(e) { return typeof e === 'object'; },
+    isUndefined : function(e) { return typeof e === 'undefined'; }
+  };
+
+  var events = {
+    on : function(event, callback) {
+      if ( !util.isObject(eventCache[event]) ) {
+        eventCache[event] = [];
+      }
+      eventCache[event].push(callback);
+    },
+    emit : function(event, data) {
+      if ( util.isObject(eventCache[event]) ) {
+        var eventQ = eventCache[event].slice();
+        for ( var i = 0; i < eventQ.length; i++ ) {
+          eventQ[i].call(this, data);
+        }
+      }
     }
   };
 
-  // return some stuff because people like to see stuff in the console
+  var breakpoints = {
+    all : function() {
+      var BPs = {};
+      var allBP = util.parseMQ(doc.querySelector('title')).split(',');
+      for ( var i = 0; i < allBP.length; i++ ) {
+        var mq = allBP[i].trim().split(' ');
+        BPs[mq[0]] = mq[1];
+      }
+      return ( unisonReady ) ? BPs : null ;
+    },
+    now : function(callback) {
+      var nowBP = util.parseMQ(head).split(' ');
+      var now = {
+        name : nowBP[0],
+        width : nowBP[1]
+      };
+      return ( unisonReady ) ? (( util.isUndefined(callback) ) ? now : callback(now)) : null ;
+    },
+    update : function() {
+      breakpoints.now(function(bp) {
+        if ( bp.name !== currentBP ) {
+          events.emit(bp.name);
+          events.emit('change', bp);
+          currentBP = bp.name;
+        }
+      });
+    }
+  };
+
+  win.onresize = util.debounce(breakpoints.update, 100);
+  win.onload = breakpoints.update;
+
   return {
-    getBreakpoints : getBreakpoints
+    fetch : {
+      all : breakpoints.all,
+      now : breakpoints.now
+    },
+    on : events.on,
+    emit : events.emit,
+    util : {
+      debounce : util.debounce,
+      isObject : util.isObject
+    }
   };
 
 })();
