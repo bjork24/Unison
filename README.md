@@ -99,8 +99,9 @@ Include `unison.min.js` on your page:
 
 `<script src="unison.min.js"></script>`
 
-Verify everything is working by entering `Unison.getBreakpoints()` in the javascript console of your browser. If the CSS is not set up 
-properly, or your page is missing the title tag, the returned value will be `null`.
+Verify everything is working by entering `Unison.fetch.all()` in the javascript 
+console of your browser. If the CSS is not set up properly, or your page is 
+missing the title tag, the returned value will be `null`.
 
 Bower Installation
 ==================
@@ -118,14 +119,15 @@ The various preprocessor partials can be found in `bower_components/unison/css/`
 Unison Responsive Comments
 ==========================
 
-Please view the [demo page](http://bjork24.github.io/Unison) to see how Responsive Comments conditional loading is implimented via Unison.
+Please view the [demo page](http://bjork24.github.io/Unison) to see how Responsive 
+Comments conditional loading is implimented via Unison.
 
 License
 =======
 
 The MIT License (MIT)
 
-Copyright (c) 2013 Dan Chilton
+Copyright (c) 2014 Dan Chilton
 
 Permission is hereby granted, free of charge, to any person obtaining a copy of
 this software and associated documentation files (the "Software"), to deal in
