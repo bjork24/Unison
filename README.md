@@ -122,6 +122,16 @@ Unison Responsive Comments
 Please view the [demo page](http://bjork24.github.io/Unison) to see how Responsive 
 Comments conditional loading is implimented via Unison.
 
+Version History
+===============
+
+**0.6.0** - Mar 20, 2014 - Added events and refactored conditional comments to not 
+use matchMedia.
+
+**0.5.1** - Jan 15, 2014 - Updated to include Bower integration.
+
+**0.5.0** - Dec 29, 2013 - First release. Basic breakpoint syncing.
+
 License
 =======
 
