@@ -8,6 +8,7 @@
   <link rel="stylesheet" href="css/breakpoints.css" />
   <link rel="stylesheet" href="css/unison.css" />
   <link href="http://fonts.googleapis.com/css?family=Josefin+Slab:400italic|Source+Sans+Pro:300,400,600" rel="stylesheet" type="text/css" />
+  <script src="js/page.js"></script>
 </head>
 <body>
 
@@ -25,7 +26,7 @@
 
     <h2>What is Unison.js</h2>
 
-    <p><strong>Unison.js</strong> is a small plugin (533 bytes minified, 164 bytes gzipped) that allows you to declare named breakpoints in one place and automatically sync them across your javascript and markup. When all of your front-end technologies share breakpoint information, complex responsive tasks such as conditional loading and image swapping become much simpler and straight-forward.</p>
+    <p><strong>Unison.js</strong> is a small plugin (1.2kb minified) that allows you to declare named breakpoints in one place and automatically sync them across your javascript and markup. When all of your front-end technologies share breakpoint information, complex responsive tasks such as conditional loading and image swapping become much simpler and straight-forward.</p>
 
     <h2>How does it work</h2>
 
@@ -99,52 +100,87 @@ $mq-sync = usn-x-small        $usn-x-small,
 &lt;script src="unison.min.js">&lt;/script>
 </pre>
 
-    <p>And that's all there is to it! Your named breakspaces are now available in any of your javascript files. To test, open your javascript console and type <em>Unison.getBreakpoints()</em>. If everything is set up correctly, the console will return two objects: one with your current breakpoint's name and value, and a second containing a hash of the other breakpoints you declared in your <em>breakpoints</em> file. If your CSS is not correctly passing breakpoint variables, <em>Unison.getBreakpoints()</em> will return <em>null</em>.</p>
+    <p>And that's all there is to it! Your named breakspaces are now available in any of your javascript files. To test, open your javascript console and type <em>Unison.fetch.all()</em>. If everything is set up correctly, the console will return an object containing a hash of the breakpoints you declared in your <em>breakpoints</em> file. If your CSS is not correctly passing breakpoint variables, <em>Unison.fetch.all()</em> will return <em>null</em>.</p>
 
     <h2>Behind the scenes</h2>
 
     <p>The <em>breakpoints</em> file is using the <em>font-family</em> property on the page's <em>head</em> and <em>title</em> tags to store information. For each breakpoint you set, the current value is set and updated on your <em>head</em> tag, while the full hash of breakpoints is stored in the <em>title</em> tag. <strong>Unison.js</strong> simply parses the <em>font-family</em> property of each tag and stores them as a globally-accessible object. Simple and efficient!</p>
 
-    <h2>Interacting with breakpoint data</h2>
+    <h2>Displaying breakpoint data</h2>
 
     <p>While building out your responsive design, it's helpful to see which breakpoint you're currently working with, and <strong>Unison.js</strong> makes that data easily available. Simply set the <em>debug</em> variable to <em>true</em> in your <em>breakpoints</em> file and your current breakpoint data will be appended to your page for easy debugging. To see this in action, click the "Toggle breakpoint info" button at the top of the page and resize your browser.</p>
 
-    <p>You can access the breakpoint objects from your javascript by calling <em>Unison.getBreakpoints()</em>, or by chaining off the object to drill down for more specific data.</p>
+    <h2>Acessing breakpoint data in your javascript</h2>
+
+    <p>The <em>Unison</em> object is globally available, which allows you to easily access your breakpoint data with the <em>Unison.fetch</em> method.</p>
 
 <pre>
-var breakpointData = Unison.getBreakpoints();
-
-// breakpointData = {
-//   allBP : {
-//     usn-large : "1200px"
-//     usn-large-medium : "1000px"
-//     usn-medium : "800px"
-//     usn-small : "400px"
-//     usn-small-medium : "600px"
-//     usn-x-large : "1400px"
-//     usn-x-small : "200px"
-//   },
-//   currentBP : {
-//     name : "usn-large"
-//     width : "1200px"
-//   }
-// }
-
-var allBreakpoints = Unison.getBreakpoints().allBP;
+var allBreakpoints = Unison.fetch.all();
 
 // allBreakpoints = {
-//   usn-large : "1200px"
-//   usn-large-medium : "1000px"
-//   usn-medium : "800px"
-//   usn-small : "400px"
-//   usn-small-medium : "600px"
-//   usn-x-large : "1400px"
-//   usn-x-small : "200px"
+//   usn-x-small      : "200px",
+//   usn-small        : "400px",
+//   usn-small-medium : "600px",
+//   usn-medium       : "800px",
+//   usn-large-medium : "1000px",
+//   usn-large        : "1200px",
+//   usn-x-large      : "1400px"
 // }
 
-var currentBPval = Unison.getBreakpoints().currentBP.width;
+var currentBreakpoint = Unison.fetch.now();
 
-// currentBPval = "1200px"
+// currentBreakpoint = {
+//   name   : "usn-large",
+//   width  : "1200px"
+// }
+
+var currentBPval = parseInt(Unison.fetch.now().width);
+
+// currentBPval = 1200
+</pre>
+
+    <h2>Breakpoint events</h2>
+
+    <p><strong>Unison.js</strong> allows you to add breakpoint listeners in your javascript using the <em>Unison.on()</em> function. The declared functions will fire every time the screen is resized to the size specified in your breakpoint file. This is done without using <em>matchMedia</em>, which makes it compatable with IE9.</p>
+    <p>This page is currently running the following listeners</p>
+
+<pre>
+Unison.on('usn-medium', function() {
+  console.log('medium breakpoint');
+});
+Unison.on('usn-small', function() {
+  console.log('small breakpoint');
+});
+Unison.on('usn-medium', function() {
+  console.log('another medium function');
+});
+</pre>
+
+    <p>There's also a generic <em>Unison.on('change')</em> event that will fire whenever the breakpoint changes and return the new breakpoint's data to your callback function. This page is using:</p>
+
+<pre>
+Unison.on('change', function(bp) {
+  console.log('breakpoint changed!');
+  console.log(bp);
+});
+</pre>
+
+    <p>The <em>Unison.on('change')</em> allows you to easily organize your breakpoint-specific functions.</p>
+
+<pre>
+Unison.on('change', function(bp) {
+  switch ( bp.name ) {
+    case 'usn-small':
+      mySmallBreakpointFunction();
+      break;
+    case 'usn-medium':
+      myMediumBreakpointFunction();
+      break;
+    case 'usn-large':
+      myLargeBreakpointFunction();
+      break;
+  }
+});
 </pre>
 
     <h2>Conditional loading with Responsive Comments</h2>
@@ -200,10 +236,10 @@ var currentBPval = Unison.getBreakpoints().currentBP.width;
     <p>Another powerful feature of Responsive Comments is the ability to tie custom events to conditionally-loaded content. We've added IDs to the largest and smallest Björk pictures, and fire a message to the console whenever they're successfully loaded into the DOM.</p>
 
 <pre>
-document.getElementById('large-bjork').addEventListener('unisonResponse', function(e) {
+Unison.ConditionalLoad.loads('large-bjork', function() {
   console.log('The large photo of Björk loaded successfully!');
 });
-document.getElementById('small-bjork').addEventListener('unisonResponse', function(e) {
+Unison.ConditionalLoad.loads('small-bjork', function() {
   console.log('The small photo of Björk loaded successfully!');
 });
 </pre>
@@ -212,22 +248,15 @@ document.getElementById('small-bjork').addEventListener('unisonResponse', functi
 
   <p><strong>Unison.js</strong> is influenced by <a href="http://www.brettjankord.com/" target="_blank">Brett Jankord's</a> <a href="https://github.com/bjankord/Media-Query-Sync" target="_blank">Media Query Sync</a>.</p>
 
-  <h2>Roadmap</h2>
-
-  <ul>
-    <li>Full browser testing</li>
-    <li>Ender module</li>
-  </ul>
-
   <h2>Disclaimer</h2>
 
-  <p>This plugin should be considered beta. We haven't had a chance to test it fully across older browsers, but it should perform fine on modern browsers. Also, since the <em>unison-responsive-comments.js</em> plugin relies on <em>matchMedia</em>, you will need to use a polyfill for IE9 and below compatability, or set the <em>noMatchMediaSize</em> variable to the size of screen you'd like the script to default to for non-compliant browsers.</p>
+  <p>This plugin should be considered beta. We haven't had a chance to test it fully across older browsers, but it should perform fine on modern browsers (IE9+).</p>
 
   <h2>License</h2>
 
   <p>The MIT License (MIT)</p>
 
-  <p>Copyright (c) 2013 <a href="http://www.danchilton.com" target="_blank">Dan Chilton</a></p>
+  <p>Copyright (c) 2014 <a href="http://www.danchilton.com" target="_blank">Dan Chilton</a></p>
 
   <p>Permission is hereby granted, free of charge, to any person obtaining a copy of
   this software and associated documentation files (the "Software"), to deal in
@@ -249,14 +278,13 @@ document.getElementById('small-bjork').addEventListener('unisonResponse', functi
   </div>
 
   <script>
-    document.getElementById('large-bjork').addEventListener('unisonResponse', function(e) {
+    Unison.ConditionalLoad.loads('large-bjork', function() {
       console.log('The large photo of Björk loaded successfully!');
     });
-    document.getElementById('small-bjork').addEventListener('unisonResponse', function(e) {
+    Unison.ConditionalLoad.loads('small-bjork', function() {
       console.log('The small photo of Björk loaded successfully!');
     });
   </script>
-  <script src="js/page.js"></script>
 
   <script>
     (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){

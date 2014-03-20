@@ -16,14 +16,18 @@ Unison.Demo = (function() {
 
   document.addEventListener('DOMContentLoaded', function(event) {
     document.getElementById('js-toggle-info').addEventListener('click', toggleInfo.bind());
-    Unison.on('usn-medium', function(){
-      console.log('medium');
+    Unison.on('usn-medium', function() {
+      console.log('medium breakpoint');
     });
-    Unison.on('usn-small', function(){
-      console.log('small');
+    Unison.on('usn-small', function() {
+      console.log('small breakpoint');
     });
-    Unison.on('usn-medium', function(){
-      console.log('another medium');
+    Unison.on('usn-medium', function() {
+      console.log('another medium function');
+    });
+    Unison.on('change', function(bp) {
+      console.log('breakpoint changed!');
+      console.log(bp);
     });
   });
 

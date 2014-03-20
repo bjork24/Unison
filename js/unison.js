@@ -7,6 +7,7 @@ Unison = (function() {
   var head = doc.head;
   var eventCache = {};
   var unisonReady = win.getComputedStyle(head, null).getPropertyValue('clear') !== 'none';
+  var currentBP;
 
   var util = {
     parseMQ : function(el) {
@@ -34,18 +35,18 @@ Unison = (function() {
   };
 
   var events = {
-    on : function(bp, callback) {
-      if ( !util.isObject(eventCache[bp]) ) {
-        eventCache[bp] = [];
+    on : function(event, callback) {
+      if ( !util.isObject(eventCache[event]) ) {
+        eventCache[event] = [];
       }
-      eventCache[bp].push(callback);
+      eventCache[event].push(callback);
     },
-    emit : function(bp) {
-      var args = [].slice.call(arguments, 1);
-      if ( util.isObject(eventCache[bp]) ) {
-        eventCache[bp].slice().forEach(function(listener){
-          listener.apply(this, args);
-        });
+    emit : function(event, data) {
+      if ( util.isObject(eventCache[event]) ) {
+        var eventQ = eventCache[event].slice();
+        for ( var i = 0; i < eventQ.length; i++ ) {
+          eventQ[i].call(this, data);
+        }
       }
     }
   };
@@ -54,10 +55,10 @@ Unison = (function() {
     all : function() {
       var BPs = {};
       var allBP = util.parseMQ(doc.querySelector('title')).split(',');
-      allBP.forEach(function(bp) {
-        var mq = bp.trim().split(' ');
+      for ( var i = 0; i < allBP.length; i++ ) {
+        var mq = allBP[i].trim().split(' ');
         BPs[mq[0]] = mq[1];
-      });
+      }
       return ( unisonReady ) ? BPs : null ;
     },
     now : function(callback) {
@@ -67,14 +68,20 @@ Unison = (function() {
         width : nowBP[1]
       };
       return ( unisonReady ) ? (( util.isUndefined(callback) ) ? now : callback(now)) : null ;
+    },
+    update : function() {
+      breakpoints.now(function(bp) {
+        if ( bp.name !== currentBP ) {
+          events.emit(bp.name);
+          events.emit('change', bp);
+          currentBP = bp.name;
+        }
+      });
     }
   };
 
-  win.onresize = util.debounce(function() {
-    breakpoints.now(function(bp){
-      events.emit(bp.name);
-    });
-  }, 100);
+  win.onresize = util.debounce(breakpoints.update, 100);
+  win.onload = breakpoints.update;
 
   return {
     fetch : {
