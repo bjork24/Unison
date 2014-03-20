@@ -16,6 +16,15 @@ Unison.Demo = (function() {
 
   document.addEventListener('DOMContentLoaded', function(event) {
     document.getElementById('js-toggle-info').addEventListener('click', toggleInfo.bind());
+    Unison.on('usn-medium', function(){
+      console.log('medium');
+    });
+    Unison.on('usn-small', function(){
+      console.log('small');
+    });
+    Unison.on('usn-medium', function(){
+      console.log('another medium');
+    });
   });
 
 })();
