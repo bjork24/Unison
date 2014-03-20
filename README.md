@@ -37,7 +37,7 @@ $mq-sync:
 LESS Integration
 ================
 
-Declase breakpoints and specify names in `breakpoints.less`
+Declare breakpoints and specify names in `breakpoints.less`
 
 ```less
 // declare breakpoints
