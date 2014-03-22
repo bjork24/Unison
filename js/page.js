@@ -105,8 +105,8 @@ Unison.ConditionalLoad = function() {
     var b = document;
     var c = "data-usn-load-if";
     var d = {};
-    var e = Unison.fetch.all();
-    var f = Object.keys(e);
+    var e;
+    var f;
     var g = function(a) {
         var b = [].slice.call(a);
         for (var e = 0; e < b.length; e++) {
@@ -151,6 +151,8 @@ Unison.ConditionalLoad = function() {
         Unison.on(a, b);
     };
     b.addEventListener("DOMContentLoaded", function(a) {
+        e = Unison.fetch.all();
+        f = Object.keys(e);
         var d = g(b.querySelectorAll("[" + c + "]"));
         window.addEventListener("resize", Unison.util.debounce(h, 100));
         window.addEventListener("load", h);
