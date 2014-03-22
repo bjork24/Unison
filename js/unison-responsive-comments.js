@@ -8,8 +8,8 @@ Unison.ConditionalLoad = (function() {
   var doc = document;
   var trigger = 'data-usn-load-if';
   var nodeCache = {};
-  var BPs = Unison.fetch.all();
-  var BPnames = Object.keys(BPs);
+  var BPs;
+  var BPnames;
 
   var cacheNodes = function(nodesArr) {
     var nodes = [].slice.call(nodesArr);
@@ -59,6 +59,8 @@ Unison.ConditionalLoad = (function() {
   };
 
   doc.addEventListener("DOMContentLoaded", function(event) {
+    BPs = Unison.fetch.all();
+    BPnames = Object.keys(BPs);
     var nodes = cacheNodes( doc.querySelectorAll('[' + trigger + ']') );
     window.addEventListener('resize', Unison.util.debounce(testNodes, 100));
     window.addEventListener('load', testNodes);
