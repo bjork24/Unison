@@ -1,6 +1,8 @@
 Unison.js
 =========
 
+*NOTE:* I'm looking for someone to take over maintaining this repo. See more [here](https://github.com/bjork24/Unison/issues/18).
+
 Syncing named breakpoints across CSS, JS, and HTML.
 
 Demo and more information [here](http://bjork24.github.io/Unison).
