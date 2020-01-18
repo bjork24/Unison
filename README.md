@@ -122,7 +122,7 @@ Unison Responsive Comments
 ==========================
 
 Please view the [demo page](http://bjork24.github.io/Unison) to see how Responsive 
-Comments conditional loading is implimented via Unison.
+Comments conditional loading is implemented via Unison.
 
 Version History
 ===============
